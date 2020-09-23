@@ -1,0 +1,3 @@
+[submodule "im22project5-client"]
+	path = im22project5-client
+	url = https://github.com/codestates/im22project5-client.git
