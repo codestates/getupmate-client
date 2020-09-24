@@ -1,7 +1,7 @@
 import React from 'react';
 import Signin from './component/Signin';
-import { fakeData } from './component/FakeData_Signin';
-import './App.css'
+import Signup from './component/Signup';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Signin />
+        <Signup />
       </div>
     );
   }
