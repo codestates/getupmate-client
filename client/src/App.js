@@ -1,13 +1,23 @@
 import React from 'react';
-import Signup from "./component/Signup"
-import "./App.css"
+import Signin from './component/Signin';
+import Signup from './component/Signup';
+import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Signup />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Signin />
+        <Signup />
+      </div>
+    );
+  }
 }
 
 export default App;
