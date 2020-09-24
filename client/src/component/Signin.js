@@ -19,7 +19,7 @@ export default class Signin extends React.Component {
   }
 
   onClickSignin() {
-    fetch('https://url....com/user/signin', {
+    fetch('http://54.180.92.83:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.email,
