@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+.App {
+    border: 1px solid black;
+    background: linear-gradient(180deg, rgba(129,55,255,1) 0%, rgba(254,99,139,1) 81%, rgba(254,102,149,1) 86%, rgba(255,115,194,1) 100%);
+    width: 480px;
+    height: 853px;
+    margin: auto;
+}
