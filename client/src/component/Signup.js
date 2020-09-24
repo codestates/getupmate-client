@@ -38,7 +38,7 @@ class Signup extends React.Component{
         console.log(password, passwordCheck)
 
         if (this.validate(email) && (password === passwordCheck)){
-            fetch("https://koreanjson.com/user/signup", {
+            fetch("http://54.180.92.83:3000/user/signup", {
                 method:"POST",
                 header : {
                     "content-type" : "application/json"
