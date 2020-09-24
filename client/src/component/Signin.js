@@ -1,5 +1,4 @@
 import React from 'react';
-import { fakeData } from './FakeData_Signin';
 import './Signin.css'
 
 export default class Signin extends React.Component {
@@ -33,6 +32,10 @@ export default class Signin extends React.Component {
       .then(json => console.log(json))
   }
 
+  onClickSocialLogin() {
+    // 소셜로그인 구현
+  }
+
   render() {
     return (
       <div className="user Signin">
@@ -52,9 +55,14 @@ export default class Signin extends React.Component {
             value={this.state.password}
             name="password"
           />
-          <button
-            onClick={this.onClickSignin.bind(this)}
-          >Signin</button>
+          <div>
+            <button
+              onClick={this.onClickSignin.bind(this)}
+            >Signin</button>
+            <button
+              onClick={this.onClickSocialLogin.bind(this)}
+            >Login with Google</button>
+          </div>
         </div>
       </div>
     );
