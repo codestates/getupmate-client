@@ -1,5 +1,6 @@
 import React from "react";
 import './Signup.css';
+import { withRouter } from "react-router-dom";
 
 class Signup extends React.Component{
     constructor(props){
@@ -58,14 +59,15 @@ class Signup extends React.Component{
                 passwordCheck : ""
                 })
             })
+            .then(() => {
+                this.props.history.push('/')
+            })
     
         } else {
             this.validate(email) ? console.log(true) :alert("유효하지 않은 이메일입니다");
             (password === passwordCheck && password !=="") ? console.log(true) : alert("비밀번호가 일치하지 않습니다");
         }
     }
-
-
 
 
     render(){
@@ -86,5 +88,5 @@ class Signup extends React.Component{
     }
 }
 
-export default Signup;
+export default withRouter(Signup);
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import './Signin.css'
+import { withRouter } from "react-router-dom";
 
-export default class Signin extends React.Component {
+class Signin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +19,7 @@ export default class Signin extends React.Component {
   }
 
   onClickSignin() {
+    const {isLoginHandler} = this.props;
     fetch('http://54.180.92.83:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -30,10 +32,16 @@ export default class Signin extends React.Component {
     })
       .then(response => response.json())
       .then(json => console.log(json))
+      .then(() => isLoginHandler());
   }
 
   onClickSocialLogin() {
     // 소셜로그인 구현
+  }
+
+  onClickSignUp(){
+    this.props.history.push("/signup");
+    console.log(this.props.history)
   }
 
   render() {
@@ -62,9 +70,13 @@ export default class Signin extends React.Component {
             <button
               onClick={this.onClickSocialLogin.bind(this)}
             >Login with Google</button>
+            <button
+              onClick={this.onClickSignUp.bind(this)}
+            >Sign up</button>
           </div>
         </div>
       </div>
     );
   }
 }
+export default withRouter(Signin);
