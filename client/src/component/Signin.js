@@ -38,10 +38,6 @@ class Signin extends React.Component {
       });
   }
 
-  onClickSocialLogin() {
-    // 소셜로그인 구현
-    fetch('http://54.180.92.83:3000/auth/google');
-  }
 
   onClickSignUp() {
     this.props.history.push("/signup");
@@ -70,9 +66,8 @@ class Signin extends React.Component {
             <button
               onClick={this.onClickSignin.bind(this)}
             >Signin</button>
-            <button
-              onClick={this.onClickSocialLogin.bind(this)}
-            >Login with Google</button>
+            <button>
+            <a href ="http://get-up-mate.s3-website.ap-northeast-2.amazonaws.com/auth/google">Login with Google</a></button>
             <button
               onClick={this.onClickSignUp.bind(this)}
             >Sign up</button>
