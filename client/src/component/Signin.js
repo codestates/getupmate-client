@@ -19,7 +19,7 @@ class Signin extends React.Component {
   }
 
   onClickSignin() {
-    const {isLoginHandler} = this.props;
+    const { isLoginHandler, setNicknameHandler } = this.props;
     fetch('http://54.180.92.83:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -32,7 +32,10 @@ class Signin extends React.Component {
     })
       .then(response => response.json())
       .then(json => console.log(json))
-      .then(() => isLoginHandler());
+      .then((json) => {
+        isLoginHandler()
+        setNicknameHandler(json.nickname)
+      });
   }
 
   onClickSocialLogin() {
@@ -40,7 +43,7 @@ class Signin extends React.Component {
     fetch('http://54.180.92.83:3000/auth/google');
   }
 
-  onClickSignUp(){
+  onClickSignUp() {
     this.props.history.push("/signup");
   }
 
