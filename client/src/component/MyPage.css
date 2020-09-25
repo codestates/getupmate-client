@@ -1,0 +1,19 @@
+.MyPage_profile {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 90%;
+    margin: auto;
+    align-items: top;
+}
+
+.MyPage_profile img {
+    border: 1px solid rgb(60, 60, 60);
+    border-radius: 50%;
+    width: 120px;
+    margin: 20px;
+}
+
+.MyPage_nickname {
+    margin: auto;
+}
+

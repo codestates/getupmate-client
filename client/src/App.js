@@ -1,6 +1,7 @@
 import React from 'react';
 import Signin from './component/Signin';
 import Signup from './component/Signup';
+import MyPage from './component/MyPage';
 import './App.css';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
       <div className="App">
         <Signin />
         <Signup />
+        <MyPage />
       </div>
     );
   }
