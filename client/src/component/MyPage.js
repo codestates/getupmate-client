@@ -20,7 +20,6 @@ export default class MyPage extends React.Component {
             <button>Sign out</button>
           </div>
         </div>
-        <Tab />
       </div>
     )
   }

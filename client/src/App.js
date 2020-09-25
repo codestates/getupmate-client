@@ -4,7 +4,8 @@ import Signup from './component/Signup';
 import MyPage from './component/MyPage';
 import './App.css';
 import {Switch, Route, Redirect} from "react-router-dom"
-
+import Alarm from "./component/Alarm"
+import Tab from "./component/Tab"
 
 class App extends React.Component {
   constructor(props) {
@@ -44,13 +45,22 @@ class App extends React.Component {
           return  <Redirect to="/" />
         }} />     
          <Route exact path="/home" render = {() => {
-          return <MyPage />
+          if (isLogin){
+            return <MyPage />
+          }
+          return  <Redirect to = "/signin" />
         }} />      
         <Route exact path="/alarm" render = {() => {
-          return <MyPage />
+          if (isLogin){
+            return <Alarm />
+          }
+          return  <Redirect to = "/signin" />
         }} />      
         <Route exact path="/friends" render = {() => {
-          return <MyPage /> 
+          if (isLogin){
+            return <MyPage />
+          }
+          return  <Redirect to = "/signin" />
         }} />
         <Route path="/" render = {()=> {
           if (isLogin){
@@ -59,6 +69,7 @@ class App extends React.Component {
           return <Redirect to = "/signin" />
         }} />
       </Switch>
+      <Tab isLogin = {isLogin}/>
    </div>
     );
   }

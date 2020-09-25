@@ -14,7 +14,6 @@ div .tabs button:hover {
     background-color: #777;
   }
 
-div .tabs{
-    position:fixed;
-    bottom:100px;
+div .none {
+  display : none;
 }
