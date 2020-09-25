@@ -1,6 +1,6 @@
 import React from 'react';
 import './Signin.css'
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class Signin extends React.Component {
   constructor(props) {
@@ -37,11 +37,11 @@ class Signin extends React.Component {
 
   onClickSocialLogin() {
     // 소셜로그인 구현
+    fetch('http://54.180.92.83:3000/auth/google');
   }
 
   onClickSignUp(){
     this.props.history.push("/signup");
-    console.log(this.props.history)
   }
 
   render() {
