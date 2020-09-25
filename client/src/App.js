@@ -4,7 +4,7 @@ import Signup from './component/Signup';
 import MyPage from './component/MyPage';
 import './App.css';
 import {Switch, Route, Redirect} from "react-router-dom"
-
+import Alarm from "./component/Alarm"
 
 class App extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class App extends React.Component {
           return <MyPage />
         }} />      
         <Route exact path="/alarm" render = {() => {
-          return <MyPage />
+          return <Alarm />
         }} />      
         <Route exact path="/friends" render = {() => {
           return <MyPage /> 
