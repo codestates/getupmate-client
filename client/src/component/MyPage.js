@@ -1,6 +1,7 @@
 import React from 'react';
 import './MyPage.css'
 import profile_pic from '../profile_pic.png';
+import Tab from "./Tab"
 
 export default class MyPage extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export default class MyPage extends React.Component {
     }
     this.setState({ changeClick: !this.state.changeClick })
   }
-
+  
   render() {
     return (
       <div className="MyPage">
@@ -56,6 +57,7 @@ export default class MyPage extends React.Component {
             <button>Sign out</button>
           </div>
         </div>
+        <Tab />
       </div>
     )
   }
