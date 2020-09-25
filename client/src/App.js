@@ -4,7 +4,7 @@ import Signup from './component/Signup';
 import MyPage from './component/MyPage';
 import './App.css';
 import {Switch, Route, Redirect} from "react-router-dom"
-import MyPage from './component/MyPage';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -36,9 +36,22 @@ class App extends React.Component {
         <Route exact path="/signup" render = {() => {
           return <Signup />
         }} />
+
         <Route exact path="/mypage" render = {() => {
+          if (isLogin){
+            return <MyPage />
+          }
+          return  <Redirect to="/" />
+        }} />     
+         <Route exact path="/home" render = {() => {
           return <MyPage />
         }} />      
+        <Route exact path="/alarm" render = {() => {
+          return <MyPage />
+        }} />      
+        <Route exact path="/friends" render = {() => {
+          return <MyPage /> 
+        }} />
         <Route path="/" render = {()=> {
           if (isLogin){
             return <Redirect to="/mypage" />
