@@ -2,6 +2,8 @@ import React from 'react';
 import Signin from './component/Signin';
 import Signup from './component/Signup';
 import MyPage from './component/MyPage';
+import Alarm from "./component/Alarm"
+import Tab from "./component/Tab"
 import './App.css';
 import { Switch, Route, Redirect } from "react-router-dom"
 
@@ -32,6 +34,7 @@ class App extends React.Component {
     const { isLogin } = this.state
     return (
       <div className="App">
+        <Tab isLogin={isLogin} />
         <Switch >
           <Route path="/signin" render={() => {
             if (isLogin) {
@@ -47,10 +50,29 @@ class App extends React.Component {
             return <Signup />
           }} />
           <Route exact path="/mypage" render={() => {
-            return <MyPage
-              isLoginHandler={this.isLoginHandler.bind(this)}
-              nickname={this.state.nickname}
-            />
+            if (isLogin) {
+              return <MyPage nickname={this.state.nickname} />
+            }
+            return <Redirect to="/" />
+          }} />
+          <Route exact path="/home" render={() => {
+            if (isLogin) {
+              // 홈(팔로잉+나의 피드)페이지 생기면 그때 수정
+              return <MyPage />
+            }
+            return <Redirect to="/signin" />
+          }} />
+          <Route exact path="/alarm" render={() => {
+            if (isLogin) {
+              return <Alarm />
+            }
+            return <Redirect to="/signin" />
+          }} />
+          <Route exact path="/friends" render={() => {
+            if (isLogin) {
+              return <MyPage />
+            }
+            return <Redirect to="/signin" />
           }} />
           <Route path="/" render={() => {
             if (isLogin) {

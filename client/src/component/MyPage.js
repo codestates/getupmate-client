@@ -94,7 +94,6 @@ export default class MyPage extends React.Component {
             >Sign out</button>
           </div>
         </div>
-        <Tab />
       </div>
     )
   }
