@@ -10,7 +10,7 @@ class Signin extends React.Component {
       password: ''
     }
   }
-  
+
   onChange(e) {
     console.log(e.target.name, ":", e.target.value);
     this.setState({
@@ -19,7 +19,7 @@ class Signin extends React.Component {
   }
 
   onClickSignin() {
-    const {isLoginHandler} = this.props;
+    const { isLoginHandler, setNicknameHandler } = this.props;
     fetch('http://54.180.92.83:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -32,14 +32,18 @@ class Signin extends React.Component {
     })
       .then(response => response.json())
       .then(json => console.log(json))
-      .then(() => isLoginHandler())
+
+      .then((json) => {
+         isLoginHandler()
+         setNicknameHandler(json.nickname)
+      })
       .catch((err) => {
         alert('등록되지 않은 유저입니다.')
       });
   }
 
 
-  onClickSignUp(){
+  onClickSignUp() {
     this.props.history.push("/signup");
   }
 
@@ -67,7 +71,7 @@ class Signin extends React.Component {
               onClick={this.onClickSignin.bind(this)}
             >Signin</button>
             <button>
-            <a href ="http://get-up-mate.s3-website.ap-northeast-2.amazonaws.com/auth/google">Login with Google</a></button>
+              <a href="http://54.180.92.83:3000/auth/google">Login with Google</a></button>
             <button
               onClick={this.onClickSignUp.bind(this)}
             >Sign up</button>

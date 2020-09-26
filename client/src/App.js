@@ -2,16 +2,17 @@ import React from 'react';
 import Signin from './component/Signin';
 import Signup from './component/Signup';
 import MyPage from './component/MyPage';
-import './App.css';
-import { Switch, Route, Redirect } from "react-router-dom"
 import Alarm from "./component/Alarm"
 import Tab from "./component/Tab"
+import './App.css';
+import { Switch, Route, Redirect } from "react-router-dom"
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       isLogin: false,
+      nickname: null || "nickname_example"
     }
   }
 
@@ -22,6 +23,12 @@ class App extends React.Component {
     })
   }
 
+  setNicknameHandler(e) {
+    this.setState({
+      ...this.state,
+      nickname: e
+    })
+  }
 
   render() {
     const { isLogin } = this.state
@@ -33,20 +40,20 @@ class App extends React.Component {
             if (isLogin) {
               return <Redirect to="/" />
             }
-            return <Signin isLogin={isLogin} isLoginHandler={this.isLoginHandler.bind(this)} />
+            return <Signin isLogin={isLogin} isLoginHandler={this.isLoginHandler.bind(this)} setNicknameHandler={this.setNicknameHandler.bind(this)} />
           }} />
           <Route exact path="/signup" render={() => {
             return <Signup />
           }} />
-
           <Route exact path="/mypage" render={() => {
             if (isLogin) {
-              return <MyPage />
+              return <MyPage nickname={this.state.nickname} />
             }
             return <Redirect to="/" />
           }} />
           <Route exact path="/home" render={() => {
             if (isLogin) {
+              // 홈(팔로잉+나의 피드)페이지 생기면 그때 수정
               return <MyPage />
             }
             return <Redirect to="/signin" />
