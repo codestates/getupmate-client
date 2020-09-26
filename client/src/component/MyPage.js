@@ -39,8 +39,7 @@ class MyPage extends React.Component {
   changeNickname() {
     const { setNicknameHandler, id } = this.props;
     if (this.state.changeClick && this.state.nickname) {
-      console.log("id:", id)
-      fetch(`http://54.180.92.83:3000/user/changenickname/:${id}`, {
+      fetch(`http://54.180.92.83:3000/user/changenickname/${id}`, {
         method: 'POST',
         body: JSON.stringify({
           nickname: this.state.nickname
@@ -50,12 +49,11 @@ class MyPage extends React.Component {
         }
       })
         .then(response => response.json())
-        .then(json => {
-          console.log("res:", json)
-          setNicknameHandler(json.nickname)
-        })
+        .then(json => setNicknameHandler(json.nickname))
     }
-    this.setState({ changeClick: !this.state.changeClick })
+    this.setState({
+      changeClick: !this.state.changeClick
+    })
   }
 
   signoutHandler() {
