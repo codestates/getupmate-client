@@ -1,4 +1,4 @@
-div .tabs button{
+.tabs button{
     background-color: #555555;
     border: none;
     color: white;
@@ -8,12 +8,21 @@ div .tabs button{
     display: inline-block;
     font-size: 13px;
     margin: 0px;
+    width : 119.5px; 
+    height: 60px; 
   }
   
-div .tabs button:hover {
+  .tabs button:hover {
     background-color: #777;
   }
+.tabs {
+  position: relative;
+  bottom : -791px;
+}
 
-div .none {
+.none {
   display : none;
 }
+
+
+
