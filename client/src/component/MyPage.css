@@ -1,3 +1,7 @@
+.MyPage {
+    flex: 1; /* flex: 1 1 0 */
+    overflow: auto;
+}
 .MyPage_profile {
     display: flex;
     background-color: rgba(255, 255, 255, 0.8);

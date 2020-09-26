@@ -66,7 +66,10 @@ export default class MyPage extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(json => console.log(json.message))
+      .then(json => {
+        console.log(json.message)
+        this.props.isLoginHandler()
+      })
   }
 
   render() {
