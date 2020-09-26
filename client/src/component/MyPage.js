@@ -1,7 +1,6 @@
 import React from 'react';
 import './MyPage.css'
 import profile_pic from '../profile_pic.png';
-import Tab from "./Tab"
 
 export default class MyPage extends React.Component {
   constructor(props) {
@@ -66,7 +65,10 @@ export default class MyPage extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(json => console.log(json.message))
+      .then(json => {
+        console.log(json.message)
+        this.props.isLoginHandler()
+      })
   }
 
   render() {

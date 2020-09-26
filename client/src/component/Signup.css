@@ -3,6 +3,11 @@
 *{
     font-family: 'Comfortaa', cursive;
 }
+.Signup {
+    flex: 1; /* flex: 1 1 0 */
+    overflow: auto;
+    margin: auto;
+}
 h2 {
     text-align: center;
     color: white; 

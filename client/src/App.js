@@ -11,6 +11,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // test 위해 isLogin: true로 바꾸며 진행함
+      // 혹시 안바꾸고 commit해서 true로 되어있다면 false로 바꿔주세요
       isLogin: false,
       nickname: null || "nickname_example"
     }
@@ -19,7 +21,7 @@ class App extends React.Component {
   isLoginHandler() {
     this.setState({
       ...this.state,
-      isLogin: true
+      isLogin: !this.state.isLogin
     })
   }
 
@@ -40,7 +42,11 @@ class App extends React.Component {
             if (isLogin) {
               return <Redirect to="/" />
             }
-            return <Signin isLogin={isLogin} isLoginHandler={this.isLoginHandler.bind(this)} setNicknameHandler={this.setNicknameHandler.bind(this)} />
+            return <Signin
+              isLogin={isLogin}
+              isLoginHandler={this.isLoginHandler.bind(this)}
+              setNicknameHandler={this.setNicknameHandler.bind(this)}
+            />
           }} />
           <Route exact path="/signup" render={() => {
             return <Signup />
@@ -66,6 +72,7 @@ class App extends React.Component {
           }} />
           <Route exact path="/friends" render={() => {
             if (isLogin) {
+              // friends페이지 생기면 수정
               return <MyPage />
             }
             return <Redirect to="/signin" />

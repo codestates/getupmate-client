@@ -1,12 +1,11 @@
 import React from "react"
 import "./Tab.css"
-import {withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 class Tab extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-
+  constructor(props) {
+    super(props);
+  }
     onClickHandler(e){
         this.props.history.push(`/${e.target.className}`)
     } 
