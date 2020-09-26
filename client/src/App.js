@@ -17,7 +17,7 @@ class App extends React.Component {
   isLoginHandler() {
     this.setState({
       ...this.state,
-      isLogin: true
+      isLogin: !this.state.isLogin
     })
   }
 
@@ -37,13 +37,20 @@ class App extends React.Component {
             if (isLogin) {
               return <Redirect to="/" />
             }
-            return <Signin isLogin={isLogin} isLoginHandler={this.isLoginHandler.bind(this)} setNicknameHandler={this.setNicknameHandler.bind(this)} />
+            return <Signin
+              isLogin={isLogin}
+              isLoginHandler={this.isLoginHandler.bind(this)}
+              setNicknameHandler={this.setNicknameHandler.bind(this)}
+            />
           }} />
           <Route exact path="/signup" render={() => {
             return <Signup />
           }} />
           <Route exact path="/mypage" render={() => {
-            return <MyPage nickname={this.state.nickname} />
+            return <MyPage
+              isLoginHandler={this.isLoginHandler.bind(this)}
+              nickname={this.state.nickname}
+            />
           }} />
           <Route path="/" render={() => {
             if (isLogin) {
