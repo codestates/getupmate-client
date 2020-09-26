@@ -2,11 +2,11 @@ import React from 'react';
 import './MyPage.css'
 import profile_pic from '../profile_pic.png';
 
-export default class MyPage extends React.Component {
+class MyPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nickname: null,
+      nickname: '',
       changeClick: false,
       photo: null,
       setImage: null
@@ -37,9 +37,10 @@ export default class MyPage extends React.Component {
   }
 
   changeNickname() {
-    const { setNicknameHandler } = this.props;
+    const { setNicknameHandler, id } = this.props;
     if (this.state.changeClick && this.state.nickname) {
-      fetch('http://54.180.92.83:3000/user/changenickname', {
+      console.log("id:", id)
+      fetch(`http://54.180.92.83:3000/user/changenickname/:${id}`, {
         method: 'POST',
         body: JSON.stringify({
           nickname: this.state.nickname
@@ -50,7 +51,7 @@ export default class MyPage extends React.Component {
       })
         .then(response => response.json())
         .then(json => {
-          console.log(json)
+          console.log("res:", json)
           setNicknameHandler(json.nickname)
         })
     }
@@ -58,6 +59,8 @@ export default class MyPage extends React.Component {
   }
 
   signoutHandler() {
+    console.log(this.props.isLogin)
+    console.log(this.props.isLoginHandler)
     fetch('http://54.180.92.83:3000/user/signout', {
       method: 'POST',
       headers: {
@@ -66,7 +69,7 @@ export default class MyPage extends React.Component {
     })
       .then(response => response.json())
       .then(json => {
-        console.log(json.message)
+        console.log("response message:", json)
         this.props.isLoginHandler()
       })
   }
@@ -97,3 +100,5 @@ export default class MyPage extends React.Component {
     )
   }
 }
+
+export default MyPage;
