@@ -19,7 +19,7 @@ class Signin extends React.Component {
   }
 
   onClickSignin() {
-    const { isLoginHandler, setNicknameHandler } = this.props;
+    const { isLoginHandler, setUserHandler } = this.props;
     fetch('http://54.180.92.83:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
@@ -31,11 +31,10 @@ class Signin extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(json => console.log(json))
-
-      .then((json) => {
-         isLoginHandler()
-         setNicknameHandler(json.nickname)
+      .then(json => {
+        console.log(json)
+        isLoginHandler()
+        setUserHandler(json.id, json.email, json.photo, json.nickname)
       })
       .catch((err) => {
         alert('등록되지 않은 유저입니다.')
