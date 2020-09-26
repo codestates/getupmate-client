@@ -10,14 +10,16 @@ class Tab extends React.Component {
     onClickHandler(e){
         this.props.history.push(`/${e.target.className}`)
     } 
+
     render(){
+      const {isLogin} = this.props;
         return (
-            <div className="tabs">
+            <span className= {isLogin ? "tabs" : "none"}>
             <button className="home" onClick ={this.onClickHandler.bind(this)}>home</button>
             <button className="alarm" onClick ={this.onClickHandler.bind(this)}>Alarm</button>
             <button className="friends" onClick ={this.onClickHandler.bind(this)}>Friends</button>
             <button className="mypage" onClick ={this.onClickHandler.bind(this)}>myPage</button>
-          </div>
+          </span>
         )
     }
 }
