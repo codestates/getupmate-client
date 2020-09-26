@@ -1,7 +1,6 @@
 import React from 'react';
 import './MyPage.css'
 import profile_pic from '../profile_pic.png';
-import Tab from "./Tab"
 
 export default class MyPage extends React.Component {
   constructor(props) {

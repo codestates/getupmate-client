@@ -2,21 +2,21 @@
   background-color: #555555;
   border: none;
   color: white;
-  padding: 15px 37.4px;
+  padding: 15px 37px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 13px;
   margin: 0px;
-  width : 119.5px; 
+  width : 120px; 
   height: 60px; 
 }
 .tabs button:hover {
   background-color: #777;
 }
 .tabs {
-  position: relative;
-  bottom : -791px;
+  position: fixed;
+  top : 801px;
 }
 .none {
   display : none;

@@ -4,6 +4,7 @@
 
 body {
     background: linear-gradient(180deg, rgba(129,55,255,0.2) 0%, rgba(254,99,139,0.2) 81%, rgba(254,102,149,0.2) 86%, rgba(255,115,194,0.2) 100%);
+    min-height:100vh;
 }
 
 .App {
