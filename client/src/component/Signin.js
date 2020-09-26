@@ -32,9 +32,13 @@ class Signin extends React.Component {
     })
       .then(response => response.json())
       .then(json => console.log(json))
+
       .then((json) => {
-        isLoginHandler()
-        setNicknameHandler(json.nickname)
+         isLoginHandler()
+         setNicknameHandler(json.nickname)
+      })
+      .catch((err) => {
+        alert('등록되지 않은 유저입니다.')
       });
   }
 
