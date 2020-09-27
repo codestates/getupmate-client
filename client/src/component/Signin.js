@@ -36,7 +36,7 @@ class Signin extends React.Component {
         isLoginHandler()
         setUserHandler(json.id, json.email, json.photo, json.nickname)
         window.sessionStorage.setItem('id', json.id);
-        window.sessionStorage.setItem('email',json.email );
+        window.sessionStorage.setItem('email', json.email);
         window.sessionStorage.setItem('photo', json.photo);
         window.sessionStorage.setItem('nickname', json.nickname);
       })
