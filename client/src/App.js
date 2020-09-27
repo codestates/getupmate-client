@@ -15,7 +15,7 @@ class App extends React.Component {
       id: null,
       nickname: '',
       email: '',
-      photo: ''
+      photo: null,
     }
   }
 
@@ -40,6 +40,13 @@ class App extends React.Component {
     this.setState({
       ...this.state,
       nickname: e
+    })
+  }
+
+  setPhotoHandler(e) {
+    this.setState({
+      ...this.state,
+      photo: e
     })
   }
 
@@ -68,7 +75,9 @@ class App extends React.Component {
                 isLogin={this.state.isLogin}
                 id={this.state.id}
                 nickname={this.state.nickname}
+                photo={this.state.photo}
                 setNicknameHandler={this.setNicknameHandler.bind(this)}
+                setPhotoHandler={this.setPhotoHandler.bind(this)}
                 isLoginHandler={this.isLoginHandler.bind(this)}
               />
             }

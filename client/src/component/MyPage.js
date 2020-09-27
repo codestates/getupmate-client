@@ -9,13 +9,20 @@ class MyPage extends React.Component {
       nickname: '',
       changeClick: false,
       photo: null,
-      setImage: null
+      setImage: null,
+      openModal: false
     }
   }
 
   onChangeHandler(e) {
     this.setState({
       nickname: e.target.value
+    })
+  }
+
+  openModalHandler() {
+    this.setState({
+      openModal: !this.state.openModal
     })
   }
 
@@ -57,8 +64,6 @@ class MyPage extends React.Component {
   }
 
   signoutHandler() {
-    console.log(this.props.isLogin)
-    console.log(this.props.isLoginHandler)
     fetch('http://54.180.92.83:3000/user/signout', {
       method: 'POST',
       headers: {
@@ -67,7 +72,7 @@ class MyPage extends React.Component {
     })
       .then(response => response.json())
       .then(json => {
-        console.log("response message:", json)
+        console.log(json.messsage)
         this.props.isLoginHandler()
       })
   }
@@ -78,10 +83,18 @@ class MyPage extends React.Component {
         <h2>My Page</h2>
         <div className="MyPage_profile">
           <img
-            src={profile_pic}
-            onChange={this.onChangePhoto.bind(this)}
-            onClick={this.uploadPhoto.bind(this)}
+            // signin에서 받은 photo 값이 null일 경우 기본사진 띄우기
+            src={this.props.photo || profile_pic}
+            // 사진 클릭시 모달창으로 사진편집창이 떠야할듯..
+            onClick={this.openModalHandler.bind(this)}
           />
+          <div className={this.state.openModal ? "photoModal" : "none"}>
+            <div className="content">
+              <div>modal open</div>
+              <button>저장</button>
+              <button onClick={this.openModalHandler.bind(this)}>취소</button>
+            </div>
+          </div>
           <div className="MyPage_nickname">
             {this.state.changeClick
               ? <input type="text" onChange={this.onChangeHandler.bind(this)} />
