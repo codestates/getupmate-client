@@ -95,9 +95,6 @@ class MyPage extends React.Component {
           />
           <div className={this.state.openModal ? "photoModal" : "none"}>
             <div className="content">
-              <h3>test</h3>
-              <div>test</div>
-              <input type="img" onChange={this.onChangePhoto.bind(this)} />
               <button>저장</button>
               <button onClick={this.openModalHandler.bind(this)}>취소</button>
             </div>
