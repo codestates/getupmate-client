@@ -69,6 +69,7 @@ class MyPage extends React.Component {
       .then(json => {
         console.log("response message:", json)
         this.props.isLoginHandler()
+        window.sessionStorage.clear();
       })
   }
 
