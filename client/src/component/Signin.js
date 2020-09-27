@@ -35,6 +35,10 @@ class Signin extends React.Component {
         console.log(json)
         isLoginHandler()
         setUserHandler(json.id, json.email, json.photo, json.nickname)
+        window.sessionStorage.setItem('id', json.id);
+        window.sessionStorage.setItem('email',json.email );
+        window.sessionStorage.setItem('photo', json.photo);
+        window.sessionStorage.setItem('nickname', json.nickname);
       })
       .catch((err) => {
         alert('등록되지 않은 유저입니다.')
