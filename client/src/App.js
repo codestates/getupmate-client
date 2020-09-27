@@ -5,7 +5,7 @@ import MyPage from './component/MyPage';
 import Alarm from "./component/Alarm"
 import Tab from "./component/Tab"
 import './App.css';
-import { Switch, Route, Redirect } from "react-router-dom"
+import { Switch, Route, Redirect, withRouter } from "react-router-dom"
 
 class App extends React.Component {
   constructor(props) {
@@ -19,17 +19,18 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount(){
-      const id = window.sessionStorage.getItem('id');
-      if(id) {
+  componentDidMount() {
+    const id = window.sessionStorage.getItem('id');
+    if (id) {
       this.setState({
-        isLogin : true,
-        id : id,
-        nickname : window.sessionStorage.getItem('nickname'),
-        email : window.sessionStorage.getItem('email'),
-        photo : window.sessionStorage.getItem('photo')
+        isLogin: true,
+        id: id,
+        nickname: window.sessionStorage.getItem('nickname'),
+        email: window.sessionStorage.getItem('email'),
+        photo: window.sessionStorage.getItem('photo')
       })
-      }
+      this.props.history.push(window.sessionStorage.getItem('pathname'));
+    }
   }
 
   isLoginHandler() {
@@ -119,4 +120,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
