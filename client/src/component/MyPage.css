@@ -45,7 +45,7 @@
     height: 530px;
 }
 
-.photoModal.content.button {
+.photoModal.content button {
     background-color: #555555;
     border: none;
     color: white;

@@ -3,6 +3,8 @@ import Signin from './component/Signin';
 import Signup from './component/Signup';
 import MyPage from './component/MyPage';
 import Alarm from "./component/Alarm"
+import Friends from './component/Friends';
+import Home from './component/Home';
 import Tab from "./component/Tab"
 import './App.css';
 import { Switch, Route, Redirect, withRouter } from "react-router-dom"
@@ -99,8 +101,7 @@ class App extends React.Component {
           }} />
           <Route exact path="/home" render={() => {
             if (isLogin) {
-              // 홈(팔로잉+나의 피드)페이지 생기면 그때 수정
-              return <MyPage />
+              return <Home />
             }
             return <Redirect to="/signin" />
           }} />
@@ -112,14 +113,13 @@ class App extends React.Component {
           }} />
           <Route exact path="/friends" render={() => {
             if (isLogin) {
-              // friends페이지 생기면 수정
-              return <MyPage />
+              return <Friends />
             }
             return <Redirect to="/signin" />
           }} />
           <Route path="/" render={() => {
             if (isLogin) {
-              return <Redirect to="/mypage" />
+              return <Redirect to="/home" />
             }
             return <Redirect to="/signin" />
           }} />
