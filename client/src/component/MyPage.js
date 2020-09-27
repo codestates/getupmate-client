@@ -1,6 +1,7 @@
 import React from 'react';
 import './MyPage.css'
 import profile_pic from '../profile_pic.png';
+import {withRouter} from "react-router-dom"
 
 class MyPage extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class MyPage extends React.Component {
       photo: null,
       setImage: null
     }
+    window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
 
   onChangeHandler(e) {
@@ -100,4 +102,4 @@ class MyPage extends React.Component {
   }
 }
 
-export default MyPage;
+export default withRouter(MyPage);

@@ -1,5 +1,6 @@
 import React from "react"
 import "./Alarm.css"
+import {withRouter} from "react-router-dom"
 
 class Alarm extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Alarm extends React.Component {
       time: "",
       question: ""
     }
+    window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
 
   componentDidMount() {
@@ -99,4 +101,4 @@ class Alarm extends React.Component {
 }
 
 
-export default Alarm
+export default withRouter(Alarm);
