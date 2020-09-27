@@ -39,10 +39,10 @@ class MyPage extends React.Component {
     fetch('http://54.180.92.83:3000/user/changephoto', {
       method: 'POST',
       body: formData,
-      headers: {
-        "Content-type": "application/json"
-      }
+      // multer사용할 경우 headers 없이 보내야함
     })
+      .then(res => res.json())
+      .then(data => alert(data.msg))
   }
 
   changeNickname() {
@@ -95,8 +95,11 @@ class MyPage extends React.Component {
           />
           <div className={this.state.openModal ? "photoModal" : "none"}>
             <div className="content">
-              <button>저장</button>
-              <button onClick={this.openModalHandler.bind(this)}>취소</button>
+              <form className="form">
+                <p><input type='file' accept='image/jpg,impge/png,image/jpeg,image/gif' name='profile_img'></input></p>
+                <button>저장</button>
+                <button onClick={this.openModalHandler.bind(this)}>취소</button>
+              </form>
             </div>
           </div>
           <div className="MyPage_nickname">
