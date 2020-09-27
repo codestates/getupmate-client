@@ -19,6 +19,19 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount(){
+      const id = window.sessionStorage.getItem('id');
+      if(id) {
+      this.setState({
+        isLogin : true,
+        id : id,
+        nickname : window.sessionStorage.getItem('nickname'),
+        email : window.sessionStorage.getItem('email'),
+        photo : window.sessionStorage.getItem('photo')
+      })
+      }
+  }
+
   isLoginHandler() {
     this.setState({
       ...this.state,
