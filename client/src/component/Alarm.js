@@ -1,6 +1,6 @@
 import React from "react"
 import "./Alarm.css"
-import {withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 class Alarm extends React.Component {
   constructor(props) {
@@ -9,7 +9,8 @@ class Alarm extends React.Component {
       data: null,
       isAdd: false,
       time: "",
-      question: ""
+      question: "따라쓰기",
+      curTime: null
     }
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
@@ -21,10 +22,32 @@ class Alarm extends React.Component {
         ...this.state,
         data: data
       }))
+
+     this.timerID = setInterval(
+       () => this.tick(),
+       1000
+     );
+
+     this.interval = setInterval(
+       () => this.checkAlarmClock(),
+       1000
+     )
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.timerID);
+    clearInterval(this.interval);
+  }
+
+  tick(){
+    this.setState({
+      ...this.state,
+      curTime : new Date().toLocaleTimeString('it-IT', { hour12: false })
+    })
   }
 
   clickBtnHandler(e) {
-    console.log(e.target);
+    console.log(this.state.question);
     if (e.target.value === "확인") {
       fetch('http://54.180.92.83:3000/alarm', {
         method: "POST",
@@ -48,14 +71,33 @@ class Alarm extends React.Component {
   }
 
   onChangeHandler(e) {
-    console.log(e.target.name, e.target.value);
+    // console.log(typeof(e.target.value)); string으로 나온다 .
+    console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
+  setAlarmTime(e){
+    e.preventDefault();
+    const inputAlarmTime = e.target.value + ":00"
+    this.setState({
+      ...this.state,
+      time : inputAlarmTime
+    })
+  }
+  
+  checkAlarmClock(){
+    this.state.data && this.state.data.map((cur) => {
+      const {time} = cur;
+      if (time === this.state.curTime){
+        alert(`it's time`);
+      }
+    })
+  }
+
   render() {
-    const { data, isAdd } = this.state;
+    const { data, isAdd} = this.state;
     return (
       <div className="alarm">
         {
@@ -82,7 +124,7 @@ class Alarm extends React.Component {
             <button onClick={this.clickBtnHandler.bind(this)} value="확인">확인</button>
             <button onClick={this.clickBtnHandler.bind(this)} value="취소">취소</button>
             <h3>알람설정</h3>
-            <input type="time" onChange={this.onChangeHandler.bind(this)} name = "time"/>
+            <input type="time" onChange={this.setAlarmTime.bind(this)} name="time" />
             <form>
               <label for="qestion">미션선택</label>
               <select name="qestion" id="qestions" onChange={this.onChangeHandler.bind(this)} name="question">
