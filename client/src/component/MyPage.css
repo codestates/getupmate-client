@@ -1,7 +1,4 @@
-.MyPage {
-    flex: 1; /* flex: 1 1 0 */
-    overflow: auto;
-}
+/* profile 박스 css 담당 */
 .MyPage_profile {
     display: flex;
     background-color: rgba(255, 255, 255, 0.8);
@@ -10,6 +7,7 @@
     align-items: top;
 }
 
+/* 프로필 이미지 css 담당 */
 .MyPage_profile img {
     border: 1px solid rgb(60, 60, 60);
     border-radius: 50%;
@@ -17,10 +15,12 @@
     margin: 20px;
 }
 
+/* 닉네임 css 담당 */
 .MyPage_nickname {
     margin: auto;
 }
 
+/* 모달창 css 담당 */
 .MyPage_profile .photoModal {
     position: fixed;
     left:0;
@@ -33,7 +33,7 @@
 }
 
 .MyPage_profile .photoModal .content{
-    position: fixed;
+    position: absolute;
     left:50%;
     top:50%;
     z-index: 2;
@@ -45,7 +45,7 @@
     height: 530px;
 }
 
-.photoModal.content button {
+.content form button {
     background-color: #555555;
     border: none;
     color: white;
@@ -57,7 +57,7 @@
     width : 200px; 
     height: 70px; 
     position: relative;
-    bottom : -460px;
+    bottom : -364px;
 }
   
 .none{

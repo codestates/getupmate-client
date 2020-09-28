@@ -1,5 +1,12 @@
-* {
+/* * {
     box-sizing: border-box;
+} */
+
+/*app에서 모든 컴포넌트에 동일한 폰트를 뿌려주고 있다.  */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
+*{
+    font-family: 'Comfortaa', cursive;
 }
 
 body {
@@ -12,5 +19,11 @@ body {
     width: 480px;
     height: 853px;
     margin: auto;
-    display: flex;
+    flex: 1; /* flex: 1 1 0 */
+    overflow: auto;
 }
+
+/*
+1. body : 앱 밖의 배경
+2. app : 앱화면 
+*/

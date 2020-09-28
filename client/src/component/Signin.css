@@ -1,22 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
 
-*{
-    font-family: 'Comfortaa', cursive;
-}
 
-.Signin {
-    flex: 1; /* flex: 1 1 0 */
-    overflow: auto;
-    margin: auto;
-}
-
-h2 {
-    text-align: center;
-    color: white; 
-    font-size: 2rem;
-    text-shadow: 5px 5px 8px rgba(0,0,0,0.5);
-}
+/* signin에서 email, password 입력, 버튼들의 정렬담당*/
 
 .Signin_input {
     display: flex;
@@ -25,6 +9,7 @@ h2 {
     align-items: center;
 }
 
+/* email, password 입력 박스 담당*/
 .Signin_input input{
     border: none;
     border-radius: 20px;
@@ -34,11 +19,14 @@ h2 {
     height: 40px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-
+/* 
 input::placeholder{
     padding-left: 20px;
-}
+} 
+지워도 끼치는 영향 없음. 
+*/ 
 
+/*button css 담당  */
 .Signin_input button{
     background-color: #be99fe;
     border-radius: 20px;
@@ -48,6 +36,7 @@ input::placeholder{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+/*소셜로그인 링크 css 담당 */
 a {
     color: black;
     text-decoration: none;

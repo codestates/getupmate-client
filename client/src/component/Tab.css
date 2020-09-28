@@ -1,3 +1,5 @@
+
+/* 탭 button css */
 .tabs button{
   background-color: #555555;
   border: none;
@@ -11,13 +13,19 @@
   width : 120px; 
   height: 60px; 
 }
+
+/* tab button에 마우스를 올려놓았을 시 적용*/
+
 .tabs button:hover {
   background-color: #777;
 }
+
+/* absolute포지션으로 적용*/
 .tabs {
-  position: fixed;
+  position: absolute;
   top : 801px;
 }
+/* tab의 className이 none일 때 = 현재 signin, signup 페이지일 때는 tab이 보이지 않는다 .*/
 .none {
   display : none;
 }
