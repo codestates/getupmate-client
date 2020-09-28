@@ -12,7 +12,6 @@ class Signin extends React.Component {
   }
 
   onChange(e) {
-    console.log(e.target.name, ":", e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -20,7 +19,7 @@ class Signin extends React.Component {
 
   onClickSignin() {
     const { isLoginHandler, setUserHandler } = this.props;
-    fetch('http://54.180.92.83:3000/user/signin', {
+    fetch('http://52.79.242.116:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.email,
@@ -32,13 +31,21 @@ class Signin extends React.Component {
     })
       .then(response => response.json())
       .then(json => {
-        console.log(json)
-        isLoginHandler()
+        console.log("signin json:", json)
+
+        console.log("signin json.photo buffer:", Buffer.from(json.photo))
+        let imgsrc = "data:image/jpeg;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(Buffer.from(json.photo))));
+        console.log("imgsrc:", imgsrc);
+
+
+        // signin하면서 App.js의 state 업데이트
         setUserHandler(json.id, json.email, json.photo, json.nickname)
         window.sessionStorage.setItem('id', json.id);
         window.sessionStorage.setItem('email', json.email);
         window.sessionStorage.setItem('photo', json.photo);
         window.sessionStorage.setItem('nickname', json.nickname);
+        // login: false->true
+        isLoginHandler()
       })
       .catch((err) => {
         alert('등록되지 않은 유저입니다.')
@@ -74,7 +81,7 @@ class Signin extends React.Component {
               onClick={this.onClickSignin.bind(this)}
             >Signin</button>
             <button>
-              <a href="http://54.180.92.83:3000/auth/google">Login with Google</a></button>
+              <a href="http://52.79.242.116:3000/auth/google">Login with Google</a></button>
             <button
               onClick={this.onClickSignUp.bind(this)}
             >Sign up</button>

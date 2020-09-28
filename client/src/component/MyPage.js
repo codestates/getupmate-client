@@ -51,23 +51,33 @@ class MyPage extends React.Component {
     const { id } = this.props;
     const formData = new FormData();
     formData.append("photo", this.state.photo);
-    // formData === {photo: this.state.photo} 일반콘솔로확인불가
+    // formData === {photo: this.state.photo} *일반콘솔로확인불가*
     for (var pair of formData.entries()) {
       console.log(pair[0], ":", pair[1]);
       // pair[0] = key, pair[1] = value
     }
-    fetch(`http://54.180.92.83:3000/user/changephoto/${id}`, {
+    fetch(`http://52.79.242.116:3000/user/changephoto/${id}`, {
       method: 'POST',
       body: formData,
       // multer사용할 경우 headers 없이 보내야함
     })
-      .then(res => {
-        console.log(res);
-        // res.json()
-      })
-      .then((json) => {
-        console.log('post ok')
-        this.props.setPhotoHandler(this.state.previewPhoto)
+      .then((res) => {
+        console.log("changephoto response:", res)
+
+        // 이렇게하면?ㅠㅠ
+        this.props.setPhotoHandler(formData)
+
+        // let reader = new FileReader();
+        // reader.onloadend = () => {
+        //   this.props.setPhotoHandler(this.state.photo)
+        //   console.log(this.props.photo)
+        // }
+
+        // previewPhoto로 바로 바꾸면 적용은 되는데 서버연결이 안됨
+        // this.props.setPhotoHandler(this.state.previewPhoto)
+        // console.log(this.state.previewPhoto)
+
+        // 모달 창 닫기
         this.openModalHandler();
       })
   }
@@ -76,7 +86,7 @@ class MyPage extends React.Component {
   changeNickname() {
     const { setNicknameHandler, id } = this.props;
     if (this.state.changeClick && this.state.nickname) {
-      fetch(`http://54.180.92.83:3000/user/changenickname/${id}`, {
+      fetch(`http://52.79.242.116:3000/user/changenickname/${id}`, {
         method: 'POST',
         body: JSON.stringify({
           nickname: this.state.nickname
@@ -94,7 +104,7 @@ class MyPage extends React.Component {
   }
 
   signoutHandler() {
-    fetch('http://54.180.92.83:3000/user/signout', {
+    fetch('http://52.79.242.116:3000/user/signout', {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
@@ -109,7 +119,7 @@ class MyPage extends React.Component {
   }
 
   render() {
-    console.log("photo state render:", this.state.photo)
+    console.log("this.props.photo:", this.props.photo)
     return (
       <div className="MyPage">
         <h2>My Page</h2>
@@ -125,9 +135,9 @@ class MyPage extends React.Component {
           <div className={this.state.openModal ? "photoModal" : "none"}>
             <div className="content">
               <form className="form" encType="multipart/form-data">
-              <button onClick={this.uploadPhoto.bind(this)}>저장</button>
-              <button onClick={this.openModalHandler.bind(this)}>취소</button>
-              <h3>프로필 사진 설정</h3>
+                <button onClick={this.uploadPhoto.bind(this)}>저장</button>
+                <button onClick={this.openModalHandler.bind(this)}>취소</button>
+                <h3>프로필 사진 설정</h3>
                 <p>
                   <input
                     type='file'
