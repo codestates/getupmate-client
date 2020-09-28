@@ -1,6 +1,6 @@
-/* * {
+* {
     box-sizing: border-box;
-} */
+}
 
 /*app에서 모든 컴포넌트에 동일한 폰트를 뿌려주고 있다.  */
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
@@ -14,7 +14,8 @@ body {
     min-height:100vh;
 }
 
-.App {
+
+.App{
     background: linear-gradient(180deg, rgba(129,55,255,1) 0%, rgba(254,99,139,1) 81%, rgba(254,102,149,1) 86%, rgba(255,115,194,1) 100%);
     width: 480px;
     height: 853px;
@@ -23,7 +24,9 @@ body {
     overflow: auto;
 }
 
+
 /*
 1. body : 앱 밖의 배경
 2. app : 앱화면 
 */
+

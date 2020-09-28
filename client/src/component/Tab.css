@@ -18,6 +18,7 @@
 
 .tabs button:hover {
   background-color: #777;
+  cursor: pointer;
 }
 
 /* absolute포지션으로 적용*/

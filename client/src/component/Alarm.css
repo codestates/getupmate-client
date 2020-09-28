@@ -86,6 +86,11 @@
   color : wheat
 }
 
+.alarm_add_btn:hover{
+  background: rgb(75, 59, 90);
+  cursor: pointer;
+}
+
 /* 알람추가 모달창 담당 */
 
 .modal {
@@ -134,6 +139,11 @@ height: 530px;
   bottom : -460px;
 }
 
+.content button:hover{
+  background-color:#777;
+  cursor : pointer;
+}
+
 /* 알람설정 글씨 css 담당 */
 .content h3 {
   text-align: center;
@@ -162,7 +172,7 @@ form label {
 
 /* select css 담당 */
 select {
-  width: 305px; /* 원하는 너비설정 */
+  width: 300px; /* 원하는 너비설정 */
   height: 50px;
   padding: .9em .5em; /* 여백으로 높이 설정 */
   font-family: inherit;  /* 폰트 상속 */
@@ -176,10 +186,10 @@ select {
 /* 소리 /진동 박스 css 담당 */
 .content div {
   border : 1px solid black;
-  width : 284px;
-  height: 30px;
+  width : 290px;
+  height: 50px;
+  padding :10px;
   text-align: center;
-  padding:10px;
   position : relative;
   left : 40px;
   font-size: 18px;
