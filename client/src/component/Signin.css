@@ -1,6 +1,9 @@
 
 
 /* signin에서 email, password 입력, 버튼들의 정렬담당*/
+.signin{
+    margin-top : 300px;
+}
 
 .Signin_input {
     display: flex;

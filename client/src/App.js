@@ -6,8 +6,10 @@ import Alarm from "./component/Alarm"
 import Friends from './component/Friends';
 import Home from './component/Home';
 import Tab from "./component/Tab"
+import AlarmRing from "./component/AlarmRing";
 import './App.css';
 import { Switch, Route, Redirect, withRouter } from "react-router-dom"
+
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class App extends React.Component {
       nickname: '',
       email: '',
       photo: null,
+      isAlarm : true
     }
   }
 
@@ -33,6 +36,13 @@ class App extends React.Component {
       })
       this.props.history.push(window.sessionStorage.getItem('pathname'));
     }
+  }
+
+  isAlarmHandler(){
+    this.setState({
+      ...this.state,
+      isAlarm: !this.state.isAlarm
+    })
   }
 
   isLoginHandler() {
@@ -67,10 +77,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLogin } = this.state
+    const { isLogin,isAlarm} = this.state
     return (
       <div className="App">
         <Tab isLogin={isLogin} />
+        <AlarmRing isAlarm = {isAlarm} isAlarmHandler= {this.isAlarmHandler.bind(this)}/>
         <Switch >
           <Route path="/signin" render={() => {
             if (isLogin) {
@@ -107,7 +118,7 @@ class App extends React.Component {
           }} />
           <Route exact path="/alarm" render={() => {
             if (isLogin) {
-              return <Alarm />
+              return <Alarm  id={this.state.id}/>
             }
             return <Redirect to="/signin" />
           }} />

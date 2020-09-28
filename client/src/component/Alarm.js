@@ -16,7 +16,7 @@ class Alarm extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://52.79.242.116:3000/alarm')
+    fetch(`http://52.79.242.116:3000/alarm/${this.props.id}`)
       .then((res) => res.json())
       .then((data) => this.setState({
         ...this.state,
@@ -49,7 +49,7 @@ class Alarm extends React.Component {
   clickBtnHandler(e) {
     console.log(this.state.question);
     if (e.target.value === "확인") {
-      fetch('http://52.79.242.116:3000/alarm', {
+      fetch(`http://52.79.242.116:3000/alarm/${this.props.id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json"
@@ -95,45 +95,53 @@ class Alarm extends React.Component {
       }
     })
   }
+  deleteHandler(e) {
+    fetch(`http://54.180.92.83:3000/alarm/${this.props.id}/${e.target.value}?`, {
+      method: 'DELETE',
+    })
+  }
 
   render() {
     const { data, isAdd } = this.state;
     return (
-      <div className="alarm">
-        {
-          data && data.map((data) => {
-            const { id, time, question } = data;
-            return (
-              <li key={id}>
-                <div>
-                  <span className="time">{time}</span>
-                  <label className="switch">
-                    <input type="checkbox" onClick={() => { console.log('hi!') }} />
-                    <span className="slider"></span>
-                  </label>
-                  <button className="delete">&#10060;</button>
-                  <span className="question">{question}</span>
+      <div className="alarm_css">
+        <h2>Alarm</h2>
+        <div className="alarm">
+          {
+            data && data.map((data) => {
+              const { id, time, question } = data;
+              return (
+                <li key={id}>
+                  <div>
+                    <span className="time">{time}</span>
+                    <label className="switch">
+                      <input type="checkbox" onClick={() => { console.log('hi!') }} />
+                      <span className="slider"></span>
+                    </label>
+                    <button className="delete" onClick={this.deleteHandler.bind(this)} value={id}>&#10060;</button>
+                    <span className="question">{question}</span>
+                  </div>
+                </li>
+              )
+            })
+          }
+          <button className="alarm_add_btn" onClick={this.clickBtnHandler.bind(this)}>+</button>
+          <div className={isAdd ? "modal" : "none"}>
+            <div className="content">
+              <button onClick={this.clickBtnHandler.bind(this)} value="확인">확인</button>
+              <button onClick={this.clickBtnHandler.bind(this)} value="취소">취소</button>
+              <h3>알람설정</h3>
+              <input type="time" onChange={this.setAlarmTime.bind(this)} name="time" />
+              <form>
+                <label for="qestion">미션선택</label>
+                <select name="qestion" id="qestions" onChange={this.onChangeHandler.bind(this)} name="question">
+                  <option value="따라쓰기">따라쓰기</option>
+                  <option value="수학문제풀기">수학문제풀기</option>
+                </select>
+              </form>
+              <div> 소리 / 진동
                 </div>
-              </li>
-            )
-          })
-        }
-        <button className="alarm_add_btn" onClick={this.clickBtnHandler.bind(this)}>+</button>
-        <div className={isAdd ? "modal" : "none"}>
-          <div className="content">
-            <button onClick={this.clickBtnHandler.bind(this)} value="확인">확인</button>
-            <button onClick={this.clickBtnHandler.bind(this)} value="취소">취소</button>
-            <h3>알람설정</h3>
-            <input type="time" onChange={this.setAlarmTime.bind(this)} name="time" />
-            <form>
-              <label for="qestion">미션선택</label>
-              <select name="qestion" id="qestions" onChange={this.onChangeHandler.bind(this)} name="question">
-                <option value="따라쓰기">따라쓰기</option>
-                <option value="수학문제풀기">수학문제풀기</option>
-              </select>
-            </form>
-            <div> 소리 / 진동
-                </div>
+            </div>
           </div>
         </div>
       </div>
