@@ -33,7 +33,7 @@
 }
 
 .MyPage_profile .photoModal .content{
-    position: absolute;
+    position: fixed;
     left:50%;
     top:50%;
     z-index: 2;
@@ -44,6 +44,7 @@
     width: 400px;
     height: 530px;
 }
+
 
 .content form button {
     background-color: #555555;
@@ -56,10 +57,9 @@
     margin: 0px;
     width : 200px; 
     height: 70px; 
-    position: relative;
-    bottom : -364px;
 }
   
 .none{
     display : none;
 }
+

@@ -124,6 +124,9 @@ class MyPage extends React.Component {
           <div className={this.state.openModal ? "photoModal" : "none"}>
             <div className="content">
               <form className="form" encType="multipart/form-data">
+              <button onClick={this.uploadPhoto.bind(this)}>저장</button>
+              <button onClick={this.openModalHandler.bind(this)}>취소</button>
+              <h3>프로필 사진 설정</h3>
                 <p>
                   <input
                     type='file'
@@ -135,8 +138,6 @@ class MyPage extends React.Component {
                   {/* 사진업로드 시 미리보기 */}
                   {this.state.photo ? <img className='previewPhoto' src={this.state.previewPhoto} /> : null}
                 </p>
-                <button onClick={this.uploadPhoto.bind(this)}>저장</button>
-                <button onClick={this.openModalHandler.bind(this)}>취소</button>
               </form>
             </div>
           </div>
