@@ -9,7 +9,7 @@ class Alarm extends React.Component {
       data: null,
       isAdd: false,
       time: "",
-      question: "",
+      question: "따라쓰기",
       curTime: null
     }
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
@@ -47,7 +47,7 @@ class Alarm extends React.Component {
   }
 
   clickBtnHandler(e) {
-    console.log(e.target.value);
+    console.log(this.state.question);
     if (e.target.value === "확인") {
       fetch('http://54.180.92.83:3000/alarm', {
         method: "POST",
