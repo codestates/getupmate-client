@@ -82,7 +82,7 @@ class Alarm extends React.Component {
             <button onClick={this.clickBtnHandler.bind(this)} value="확인">확인</button>
             <button onClick={this.clickBtnHandler.bind(this)} value="취소">취소</button>
             <h3>알람설정</h3>
-            <input type="text" onChange={this.onChangeHandler.bind(this)} name="time" />
+            <input type="time" onChange={this.onChangeHandler.bind(this)} name = "time"/>
             <form>
               <label for="qestion">미션선택</label>
               <select name="qestion" id="qestions" onChange={this.onChangeHandler.bind(this)} name="question">

@@ -1,3 +1,5 @@
+
+/* get요청으로 받아온 알람 list css 담당 */
 .alarm li {
     list-style-type: none;
     border : 0px solid black;
@@ -6,11 +8,13 @@
     box-shadow: 2px 2px 30px 0px;
 }
 
+/* list들의 전체 css 담당 */
 .alarm {
     padding-top : 50px;
     font-size: 20px;
 }
 
+/* 토글버튼 담당 */
 .switch {
     position: relative;
     display: inline-block;
@@ -59,12 +63,14 @@
   }
 
 
+
+/* 알람 list들에 들어가는 미션 css 담당 */
 .question {
   display: block;
 }
 
 
-
+/* 알람 추가 + 버튼 css 담당*/
 .alarm_add_btn{
   width: 60px; 
   height: 60px; 
@@ -79,6 +85,8 @@
   left : 380px;
   color : wheat
 }
+
+/* 알람추가 모달창 담당 */
 
 .modal {
   position: fixed;
@@ -104,10 +112,12 @@ width: 400px;
 height: 530px;
 }
 
+/* 모달의 classname 이 none 일 때는 display하지 않는다. */
 .none{
   display : none;
 }
 
+/* 확인, 취소 버튼 css 담당 */
 .content button {
   background-color: #555555;
   border: none;
@@ -124,13 +134,18 @@ height: 530px;
   bottom : -460px;
 }
 
+/* 알람설정 글씨 css 담당 */
 .content h3 {
   text-align: center;
   margin : 0;
   position: relative;
   top : -30px;
+  left : -30px;
+  color : #030101;
+  text-shadow: none;
 }
 
+/* input time 입력칸 css 담당 */
 .content input {
   display: block;
   margin-bottom : 30px;
@@ -140,24 +155,29 @@ height: 530px;
   left : 40px;
 }
 
+/* select 의 label display담당 */
 form label {
   display: none;
 }
 
+/* select css 담당 */
 select {
-  width: 300px; /* 원하는 너비설정 */
+  width: 305px; /* 원하는 너비설정 */
+  height: 50px;
   padding: .9em .5em; /* 여백으로 높이 설정 */
   font-family: inherit;  /* 폰트 상속 */
   position : relative;
   left : 40px;
   margin-bottom : 30px;
+  font-size: 15px;
 }
 
 
+/* 소리 /진동 박스 css 담당 */
 .content div {
   border : 1px solid black;
-  width : 300px;
-  height: 50px;
+  width : 284px;
+  height: 30px;
   text-align: center;
   padding:10px;
   position : relative;
