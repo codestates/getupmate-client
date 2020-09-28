@@ -96,7 +96,7 @@ class Alarm extends React.Component {
     })
   }
   deleteHandler(e) {
-    fetch(`http://54.180.92.83:3000/alarm/${this.props.id}/${e.target.key}?`, {
+    fetch(`http://54.180.92.83:3000/alarm/${this.props.id}/${e.target.value}?`, {
       method: 'DELETE',
     })
   }
@@ -118,7 +118,7 @@ class Alarm extends React.Component {
                       <input type="checkbox" onClick={() => { console.log('hi!') }} />
                       <span className="slider"></span>
                     </label>
-                    <button className="delete" onClick={this.deleteHandler.bind(this)}>&#10060;</button>
+                    <button className="delete" onClick={this.deleteHandler.bind(this)} value={id}>&#10060;</button>
                     <span className="question">{question}</span>
                   </div>
                 </li>
