@@ -16,40 +16,40 @@ class Alarm extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://54.180.92.83:3000/alarm')
+    fetch('http://52.79.242.116:3000/alarm')
       .then((res) => res.json())
       .then((data) => this.setState({
         ...this.state,
         data: data
       }))
 
-     this.timerID = setInterval(
-       () => this.tick(),
-       1000
-     );
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
 
-     this.interval = setInterval(
-       () => this.checkAlarmClock(),
-       1000
-     )
+    this.interval = setInterval(
+      () => this.checkAlarmClock(),
+      1000
+    )
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.timerID);
     clearInterval(this.interval);
   }
 
-  tick(){
+  tick() {
     this.setState({
       ...this.state,
-      curTime : new Date().toLocaleTimeString('it-IT', { hour12: false })
+      curTime: new Date().toLocaleTimeString('it-IT', { hour12: false })
     })
   }
 
   clickBtnHandler(e) {
     console.log(this.state.question);
     if (e.target.value === "확인") {
-      fetch('http://54.180.92.83:3000/alarm', {
+      fetch('http://52.79.242.116:3000/alarm', {
         method: "POST",
         headers: {
           "content-type": "application/json"
@@ -78,26 +78,26 @@ class Alarm extends React.Component {
     })
   }
 
-  setAlarmTime(e){
+  setAlarmTime(e) {
     e.preventDefault();
     const inputAlarmTime = e.target.value + ":00"
     this.setState({
       ...this.state,
-      time : inputAlarmTime
+      time: inputAlarmTime
     })
   }
-  
-  checkAlarmClock(){
+
+  checkAlarmClock() {
     this.state.data && this.state.data.map((cur) => {
-      const {time} = cur;
-      if (time === this.state.curTime){
+      const { time } = cur;
+      if (time === this.state.curTime) {
         alert(`it's time`);
       }
     })
   }
 
   render() {
-    const { data, isAdd} = this.state;
+    const { data, isAdd } = this.state;
     return (
       <div className="alarm">
         {
