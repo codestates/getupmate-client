@@ -51,26 +51,27 @@ class MyPage extends React.Component {
     const { id } = this.props;
     const formData = new FormData();
     formData.append("photo", this.state.photo);
-    // formData === {photo: this.state.photo} *콘솔로확인불가*
+    // formData === {photo: this.state.photo} 일반콘솔로확인불가
+    for (var pair of formData.entries()) {
+      console.log(pair[0], ":", pair[1]);
+      // pair[0] = key, pair[1] = value
+    }
     fetch(`http://54.180.92.83:3000/user/changephoto/${id}`, {
       method: 'POST',
       body: formData,
       // multer사용할 경우 headers 없이 보내야함
     })
-      .then(() => {
-        console.log('post')
+      .then(res => {
+        console.log(res);
+        // res.json()
+      })
+      .then((json) => {
+        console.log('post ok')
         this.props.setPhotoHandler(this.state.previewPhoto)
-        // 로그아웃했다가 다시 들어왔을때 안변해있음! 아직 표면적으로만 바뀜..
         this.openModalHandler();
       })
-
-    // .then(res => res.json())
-    // .then(json => {
-    //   console.log(json)
-    //   // json 응답으로 {photo: formData}
-    //   // this.props.setPhotoHandler(json.photo)
-    // })
   }
+
 
   changeNickname() {
     const { setNicknameHandler, id } = this.props;
@@ -124,6 +125,9 @@ class MyPage extends React.Component {
           <div className={this.state.openModal ? "photoModal" : "none"}>
             <div className="content">
               <form className="form" encType="multipart/form-data">
+                <button onClick={this.uploadPhoto.bind(this)}>저장</button>
+                <button onClick={this.openModalHandler.bind(this)}>취소</button>
+                <h3>프로필 사진 설정</h3>
                 <p>
                   <input
                     type='file'
@@ -135,8 +139,6 @@ class MyPage extends React.Component {
                   {/* 사진업로드 시 미리보기 */}
                   {this.state.photo ? <img className='previewPhoto' src={this.state.previewPhoto} /> : null}
                 </p>
-                <button onClick={this.uploadPhoto.bind(this)}>저장</button>
-                <button onClick={this.openModalHandler.bind(this)}>취소</button>
               </form>
             </div>
           </div>
