@@ -48,10 +48,11 @@ class MyPage extends React.Component {
 
   uploadPhoto(e) {
     e.preventDefault();
+    const { id } = this.props;
     const formData = new FormData();
     formData.append("photo", this.state.photo);
     // formData === {photo: this.state.photo} *콘솔로확인불가*
-    fetch('http://54.180.92.83:3000/user/changephoto', {
+    fetch(`http://54.180.92.83:3000/user/changephoto/${id}`, {
       method: 'POST',
       body: formData,
       // multer사용할 경우 headers 없이 보내야함
@@ -128,7 +129,7 @@ class MyPage extends React.Component {
                     type='file'
                     accept='image/jpg,image/png,image/jpeg,image/gif'
                     // name 서버와 맞추기!
-                    name='profile'
+                    name='file'
                     onChange={this.onChangePhoto.bind(this)}
                   />
                   {/* 사진업로드 시 미리보기 */}
