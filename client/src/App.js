@@ -107,7 +107,7 @@ class App extends React.Component {
           }} />
           <Route exact path="/alarm" render={() => {
             if (isLogin) {
-              return <Alarm />
+              return <Alarm  id={this.state.id}/>
             }
             return <Redirect to="/signin" />
           }} />
