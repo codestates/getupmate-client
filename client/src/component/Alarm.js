@@ -96,7 +96,7 @@ class Alarm extends React.Component {
     })
   }
   deleteHandler(e) {
-    fetch(`http://54.180.92.83:3000/alarm/${this.props.id}/${e.target.key}`, {
+    fetch(`http://54.180.92.83:3000/alarm/${this.props.id}/${e.target.key}?`, {
       method: 'DELETE',
     })
   }
