@@ -52,7 +52,7 @@ class Signin extends React.Component {
 
   render() {
     return (
-      <div className="user Signin">
+      <div className="signin">
         <h2>Signin</h2>
         <div className="Signin_input">
           <input
