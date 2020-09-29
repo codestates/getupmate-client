@@ -1,7 +1,29 @@
-h3 {
-    width: 480px;
+.friends {
+    padding : 0px;
+    font-size: 20px;
+}
+
+.friends .search {
     text-align: center;
-    color: white; 
-    font-size: 2rem;
-    text-shadow: 5px 5px 8px rgba(0,0,0,0.5);
+}
+
+.friends .search input{
+    width: 350px;
+    font-size: 20px;
+}
+
+.friends .search button{
+    font-size: 20px;
+}
+.friends ul {
+    padding-left: 0;
+}
+
+.friends li {
+    list-style-type: none;
+    border : 0px solid black;
+    padding : 30px;
+    margin : 20px;
+    box-shadow: 2px 2px 30px 0px black;
+    color : black;
 }

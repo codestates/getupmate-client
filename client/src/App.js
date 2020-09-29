@@ -20,7 +20,7 @@ class App extends React.Component {
       nickname: '',
       email: '',
       photo: null,
-      isAlarm : true
+      isAlarm: true
     }
   }
 
@@ -38,7 +38,7 @@ class App extends React.Component {
     }
   }
 
-  isAlarmHandler(){
+  isAlarmHandler() {
     this.setState({
       ...this.state,
       isAlarm: !this.state.isAlarm
@@ -77,11 +77,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLogin,isAlarm} = this.state
+    const { isLogin, isAlarm } = this.state
     return (
       <div className="App">
         <Tab isLogin={isLogin} />
-        <AlarmRing isAlarm = {isAlarm} isAlarmHandler= {this.isAlarmHandler.bind(this)}/>
+        <AlarmRing isAlarm={isAlarm} isAlarmHandler={this.isAlarmHandler.bind(this)} />
         <Switch >
           <Route path="/signin" render={() => {
             if (isLogin) {
@@ -112,13 +112,19 @@ class App extends React.Component {
           }} />
           <Route exact path="/home" render={() => {
             if (isLogin) {
-              return <Home />
+              return <Home
+                id={this.state.id}
+                nickname={this.state.nickname}
+              />
             }
             return <Redirect to="/signin" />
           }} />
           <Route exact path="/alarm" render={() => {
             if (isLogin) {
-              return <Alarm  id={this.state.id}/>
+              return <Alarm
+                id={this.state.id}
+                isAlarmHandler={this.isAlarmHandler.bind(this)}
+              />
             }
             return <Redirect to="/signin" />
           }} />
