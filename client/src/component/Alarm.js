@@ -9,9 +9,9 @@ class Alarm extends React.Component {
       data: null,
       isAdd: false,
       time: "",
-      type : "따라쓰기",
+      type: "따라쓰기",
       curTime: null,
-      difficulty : "상"
+      difficulty: "상"
     }
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
@@ -66,7 +66,7 @@ class Alarm extends React.Component {
         },
         body: JSON.stringify({
           type: this.state.type,
-          difficulty : this.state.difficulty,
+          difficulty: this.state.difficulty,
           time: this.state.time
         })
       }).then(() => {
@@ -102,7 +102,7 @@ class Alarm extends React.Component {
   checkAlarmClock() {
     this.state.data && this.state.data.map((cur) => {
       const { time, id } = cur;
-      if (time === this.state.curTime) {
+      if (time === this.state.curTime && (window.localStorage.getItem(id) !== "true")) {
         this.props.curAlarm_numHandler(id);
         this.props.isAlarmHandler();
       }
@@ -120,7 +120,9 @@ class Alarm extends React.Component {
     })
   }
 
-
+  alarm_onHandler(id, checked) {
+    window.localStorage.setItem(id, checked);
+  }
 
 
   render() {
@@ -133,11 +135,15 @@ class Alarm extends React.Component {
           {
             data && data.map((data) => {
               const { id, time, question } = data;
+              window.localStorage.getItem(id) === null ? window.localStorage.setItem(id, false) : window.localStorage.getItem(id);
               return (
-                <li key={id}>
+                <li key={id} className={window.localStorage.getItem(id)}>
                   <div>
-                    <label className={"switch"}>
-                      <input type="checkbox" />
+                    <label className={window.localStorage.getItem(id)}>
+                      <input type="checkbox" onClick={(e) => {
+                        this.alarm_onHandler(id, e.target.checked);
+                      }
+                      } />
                       <span className="slider"></span>
                     </label>
                     <button className="delete" onClick={this.deleteHandler.bind(this)} value={id}>&#10060;</button>
@@ -150,6 +156,7 @@ class Alarm extends React.Component {
               )
             })
           }
+
           <div className={isAdd ? "modal" : "none"}>
             <div className="content">
               <button onClick={this.clickBtnHandler.bind(this)} value="확인">확인</button>
