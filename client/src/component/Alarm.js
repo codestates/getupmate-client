@@ -99,8 +99,9 @@ class Alarm extends React.Component {
 
   checkAlarmClock() {
     this.state.data && this.state.data.map((cur) => {
-      const { time } = cur;
+      const { time, id } = cur;
       if (time === this.state.curTime) {
+        this.props.curAlarm_numHandler(id);
         this.props.isAlarmHandler();
       }
     })

@@ -38,7 +38,7 @@
     border : 2px solid rgb(122, 38, 118);
     font-size : 20px;
     position : relative;
-    top : 300px;
+    top : 350px;
     left : 95px;
 }
 
@@ -48,3 +48,52 @@
 }
   /* 모달의 classname 이 none 일 때는 display하지 않는다. */
  
+
+/* mission 문제, 답 css */
+.isAlarm .content .mission h2 {
+    color :white;
+    font-size: 25px;
+}
+
+/* mission 문제css */
+.isAlarm .content .mission .question {
+    color :white;
+    position: relative;
+    top : -150px;
+    left : 5px;
+}
+
+/* mission question css */
+.isAlarm .content .mission p{
+    color :white;
+    position: relative;
+    top : -145px;
+    left : 5px;
+}
+
+/* mission 답 css */
+.isAlarm .content .mission .answer {
+    color :white;
+    position: relative;
+    top : -230px;
+    left : 5px;
+}
+
+
+/* mission 답 input box css */
+.isAlarm .content .mission input {
+    color :rgb(122, 38, 118);
+    font-size: large;
+    position: relative;
+    top : -230px;
+    left : 5px;
+}
+.isAlarm .content .mission input:hover {
+    box-shadow: 0 0 10px 2px rgb(255, 91, 247);
+}
+
+
+/* div border none*/
+.isAlarm .content .mission {
+    border : none;
+}
