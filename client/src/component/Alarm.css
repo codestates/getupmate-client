@@ -20,8 +20,9 @@
     font-size: 20px;
 }
 
-/* 토글버튼 담당 */
-.switch {
+
+/* 토글버튼 크기 담당*/
+label {
     position: relative;
     display: inline-block;
     width: 58px;
@@ -30,7 +31,9 @@
     top : -5px;
   } 
 
-  .slider {
+/* 토글버튼 담당 -> 알람이 켜저있을 때*/
+/* 파란색배경의 슬라이더 배경 */
+  .false .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -38,12 +41,28 @@
     right: 0;
     bottom: 0;
     background-color: #2196F3;
-    -webkit-transition: .4s;
     transition: .4s;
     border-radius: 34px;
   }
+/* 토글버튼 담당 -> 알람이 꺼져있을 때*/
+/* 회색 슬라이더 배경 */
 
-.slider:before {
+.true .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+/* 슬라이더를 했을 시 action css : false -> true로 이동 */
+/* 토글 버튼 위의 동그라미 담당 */
+.false .slider:before {
     position: absolute;
     content: "";
     height: 20px;
@@ -51,23 +70,36 @@
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: .2s;
+    transition: .2s;
   } 
+
+
+  /* 슬라이더를 했을 시 action css : true -> false로 이동 */
+/* 토글 버튼 위의 동그라미 담당 */
+.true .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 35px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .2s;
+  transition: .2s;
+} 
+
+
 
    input:checked + .slider {
     background-color: #ccc;
   }
 
+  /* 토글 위의 동그라미 radius*/
   .slider:before {
     border-radius: 50%;
   }
 
-  input:checked + .slider:before{
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
 
 
 /* 알람 list들에 들어가는 미션 css 담당 */
