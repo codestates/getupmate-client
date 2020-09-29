@@ -16,7 +16,7 @@ class Alarm extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://52.79.242.116:3000/alarm/${this.props.id}`)
+    fetch(`http://www.gijigae.com:3000/alarm/${this.props.id}`)
       .then((res) => res.json())
       .then((data) => this.setState({
         ...this.state,
@@ -49,7 +49,7 @@ class Alarm extends React.Component {
   clickBtnHandler(e) {
     console.log(this.state.question);
     if (e.target.value === "확인") {
-      fetch(`http://52.79.242.116:3000/alarm/${this.props.id}`, {
+      fetch(`http://www.gijigae.com:3000/alarm/${this.props.id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json"
@@ -96,7 +96,7 @@ class Alarm extends React.Component {
     })
   }
   deleteHandler(e) {
-    fetch(`http://54.180.92.83:3000/alarm/${this.props.id}/${e.target.value}?`, {
+    fetch(`http://www.gijigae.com:3000/alarm/${this.props.id}/${e.target.value}?`, {
       method: 'DELETE',
     })
   }
