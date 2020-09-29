@@ -38,7 +38,7 @@ class MyPage extends React.Component {
     reader.onloadend = () => {
       // 파일 읽기가 완료되면 state를 바꿈
       this.setState({
-        photo: reader.result,  // file ---> reader.result
+        photo: file,
         previewPhoto: reader.result
       })
     }
@@ -52,10 +52,10 @@ class MyPage extends React.Component {
     const formData = new FormData();
     formData.append("photo", this.state.photo);
     // formData === {photo: this.state.photo} *일반콘솔로확인불가*
-    for (var pair of formData.entries()) {
-      console.log("formData??", pair[0], ":", pair[1]);
-      // pair[0] = key, pair[1] = value
-    }
+    // for (var pair of formData.entries()) {
+    //   console.log("formData??", pair[0], ":", pair[1]);
+    //   // pair[0] = key, pair[1] = value
+    // }
     fetch(`http://www.gijigae.com:3000/user/changephoto/${id}`, {
       method: 'POST',
       body: formData,
@@ -64,14 +64,7 @@ class MyPage extends React.Component {
       .then((res) => {
         console.log("changephoto response:", res)
 
-        // 이렇게하면?ㅠㅠ
-        // this.props.setPhotoHandler(formData)
-
-        this.props.setPhotoHandler(this.state.photo)
-        console.log("state:", this.state.photo)
-
-        // previewPhoto로 바로 바꾸면 적용은 되는데 서버연결이 안됨
-        // this.props.setPhotoHandler(this.state.previewPhoto)
+        this.props.setPhotoHandler(this.state.previewPhoto)
         // console.log(this.state.previewPhoto)
 
         // 모달 창 닫기
@@ -116,8 +109,6 @@ class MyPage extends React.Component {
   }
 
   render() {
-    console.log("this.props.photo:", this.props.photo)
-    console.log("this.props.photo:", typeof this.props.photo)
     return (
       <div className="MyPage">
         <h2>My Page</h2>
