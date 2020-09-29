@@ -1,6 +1,7 @@
 import React from 'react';
 import './Signin.css'
 import { withRouter, Link } from "react-router-dom";
+import profile_pic from '../profile_pic.png';
 
 class Signin extends React.Component {
   constructor(props) {
@@ -33,10 +34,15 @@ class Signin extends React.Component {
     console.log('user : ', user);
     let findImg = await fetch(`http://www.gijigae.com:3000/upload/${user.id}-photo.jpeg`);
     console.log('img : ', findImg);
-    setUserHandler(user.id, user.email, findImg.url, user.nickname)
+    if (findImg.status === 404) {
+      setUserHandler(user.id, user.email, profile_pic, user.nickname)
+      window.sessionStorage.setItem('photo', profile_pic);
+    } else {
+      setUserHandler(user.id, user.email, findImg.url, user.nickname)
+      window.sessionStorage.setItem('photo', findImg.url);
+    }
     window.sessionStorage.setItem('id', user.id);
     window.sessionStorage.setItem('email', user.email);
-    window.sessionStorage.setItem('photo', findImg.url);
     window.sessionStorage.setItem('nickname', user.nickname);
     // login: false->true
     isLoginHandler()
