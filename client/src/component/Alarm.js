@@ -9,8 +9,9 @@ class Alarm extends React.Component {
       data: null,
       isAdd: false,
       time: "",
-      question: "따라쓰기",
+      type : "따라쓰기",
       curTime: null,
+      difficulty : "상"
     }
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
@@ -64,7 +65,8 @@ class Alarm extends React.Component {
           "content-type": "application/json"
         },
         body: JSON.stringify({
-          question: this.state.question,
+          type: this.state.type,
+          difficulty : this.state.difficulty,
           time: this.state.time
         })
       }).then(() => {
@@ -155,10 +157,17 @@ class Alarm extends React.Component {
               <h3>알람설정</h3>
               <input type="time" onChange={this.setAlarmTime.bind(this)} name="time" />
               <form>
-                <label for="qestion">미션선택</label>
-                <select name="qestion" id="qestions" onChange={this.onChangeHandler.bind(this)} name="question">
+                <label for="qestion">type선택</label>
+                <select name="type" id="type" onChange={this.onChangeHandler.bind(this)} name="type">
                   <option value="따라쓰기">따라쓰기</option>
                   <option value="수학문제풀기">수학문제풀기</option>
+                </select>
+                <label for="difficulty">난이도선택</label>
+                <select name="difficulty" id="difficulty" onChange={this.onChangeHandler.bind(this)} name="difficulty">
+                  <option>난이도선택</option>
+                  <option value="상">상</option>
+                  <option value="중">중</option>
+                  <option value="하">하</option>
                 </select>
               </form>
               <div> 소리 / 진동

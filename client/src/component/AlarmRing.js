@@ -12,6 +12,9 @@ export default class AlarmRing extends React.Component {
     }
   }
 
+
+
+
   missionHandler() {
     this.setState({
       mission_on: !this.state.mission_on
@@ -65,6 +68,7 @@ export default class AlarmRing extends React.Component {
         </div>
       </div>
     )
+
   }
 
 }
