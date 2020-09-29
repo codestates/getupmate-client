@@ -10,7 +10,7 @@
 
 /* list들의 전체 css 담당 */
 .alarm {
-    padding-top : 50px;
+  padding : 0px;
     font-size: 20px;
 }
 
@@ -20,7 +20,8 @@
     display: inline-block;
     width: 58px;
     height: 27px;
-    left :200px;
+    left :260px;
+    top : -5px;
   } 
 
   .slider {
@@ -193,4 +194,22 @@ select {
   position : relative;
   left : 40px;
   font-size: 18px;
+}
+
+/* delete 버튼 css 담당*/
+.delete {
+  position: relative;
+  left : 290px;
+  border-radius: 50%;
+  width : 40px;
+  height: 40px;
+  top : -5px;
+}
+
+/* 시간 css 담당 */
+
+.time{
+  position: relative;
+  right : 50px;
+  font-size: 25px;
 }
