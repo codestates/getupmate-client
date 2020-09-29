@@ -34,15 +34,14 @@ class Signin extends React.Component {
         console.log("signin json:", json)
 
         console.log("signin json.photo buffer:", Buffer.from(json.photo))
-        let imgsrc = "data:image/jpeg;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(Buffer.from(json.photo))));
+        let imgsrc = `http://www.gijigae.com:3000/upload/${Buffer.from(json.photo).toString('utf8')}`
         console.log("imgsrc:", imgsrc);
 
-
         // signin하면서 App.js의 state 업데이트
-        setUserHandler(json.id, json.email, json.photo, json.nickname)
+        setUserHandler(json.id, json.email, imgsrc, json.nickname)
         window.sessionStorage.setItem('id', json.id);
         window.sessionStorage.setItem('email', json.email);
-        window.sessionStorage.setItem('photo', json.photo);
+        window.sessionStorage.setItem('photo', imgsrc);
         window.sessionStorage.setItem('nickname', json.nickname);
         // login: false->true
         isLoginHandler()
