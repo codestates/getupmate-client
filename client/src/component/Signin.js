@@ -19,7 +19,7 @@ class Signin extends React.Component {
 
   onClickSignin() {
     const { isLoginHandler, setUserHandler } = this.props;
-    fetch('http://52.79.242.116:3000/user/signin', {
+    fetch('http://www.gijigae.com:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.email,
@@ -81,7 +81,7 @@ class Signin extends React.Component {
               onClick={this.onClickSignin.bind(this)}
             >Signin</button>
             <button>
-              <a href="http://52.79.242.116:3000/auth/google">Login with Google</a></button>
+              <a href="http://www.gijigae.com:3000/auth/google">Login with Google</a></button>
             <button
               onClick={this.onClickSignUp.bind(this)}
             >Sign up</button>
