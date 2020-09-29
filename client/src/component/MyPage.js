@@ -56,7 +56,7 @@ class MyPage extends React.Component {
       console.log(pair[0], ":", pair[1]);
       // pair[0] = key, pair[1] = value
     }
-    fetch(`http://52.79.242.116:3000/user/changephoto/${id}`, {
+    fetch(`http://www.gijigae.com:3000/user/changephoto/${id}`, {
       method: 'POST',
       body: formData,
       // multer사용할 경우 headers 없이 보내야함
@@ -86,7 +86,7 @@ class MyPage extends React.Component {
   changeNickname() {
     const { setNicknameHandler, id } = this.props;
     if (this.state.changeClick && this.state.nickname) {
-      fetch(`http://52.79.242.116:3000/user/changenickname/${id}`, {
+      fetch(`http://www.gijigae.com:3000/user/changenickname/${id}`, {
         method: 'POST',
         body: JSON.stringify({
           nickname: this.state.nickname
@@ -104,7 +104,7 @@ class MyPage extends React.Component {
   }
 
   signoutHandler() {
-    fetch('http://52.79.242.116:3000/user/signout', {
+    fetch('http://www.gijigae.com:3000/user/signout', {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
