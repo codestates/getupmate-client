@@ -39,7 +39,7 @@ class App extends React.Component {
     }
   }
 
-  isAlarmHandler(){
+  isAlarmHandler() {
     this.setState({
       ...this.state,
       isAlarm: !this.state.isAlarm
@@ -120,7 +120,10 @@ class App extends React.Component {
           }} />
           <Route exact path="/home" render={() => {
             if (isLogin) {
-              return <Home />
+              return <Home
+                id={this.state.id}
+                nickname={this.state.nickname}
+              />
             }
             return <Redirect to="/signin" />
           }} />
