@@ -8,8 +8,7 @@ export default class AlarmRing extends React.Component {
       mission_on: false,
       question: "",
       answer: "",
-      userAnswer: "",
-      time: ""
+      userAnswer: ""
     }
   }
 
@@ -28,8 +27,7 @@ export default class AlarmRing extends React.Component {
       .then((data) => this.setState({
         ...this.state,
         question: data.question,
-        answer: data.answer,
-        time: data.time
+        answer: data.answer
       }))
   }
 
@@ -47,7 +45,7 @@ export default class AlarmRing extends React.Component {
         <div className={isAlarm ? "isAlarm" : "none"}>
           <div className="content">
             <button className="alarm_cancel" onClick={this.missionHandler.bind(this)}>알람해제</button>
-            <h2>{time}</h2>
+            <h2>{(new Date().toLocaleTimeString('it-IT')).slice(0,5)}</h2>
           </div>
         </div>
 
