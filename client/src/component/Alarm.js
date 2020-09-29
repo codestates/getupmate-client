@@ -96,7 +96,10 @@ class Alarm extends React.Component {
     })
   }
   deleteHandler(e) {
-    fetch(`http://www.gijigae.com:3000/alarm/${this.props.id}/${e.target.value}?`, {
+    const url = new URL(`http://www.gijigae.com:3000/alarm/${this.props.id}`);
+     url.searchParams.append("id", e.target.value);
+    console.log(url);
+    fetch(url, {
       method: 'DELETE',
     })
   }
