@@ -97,7 +97,7 @@ class Alarm extends React.Component {
   }
   deleteHandler(e) {
     const url = new URL(`http://www.gijigae.com:3000/alarm/${this.props.id}`);
-     url.searchParams.append("id", e.target.value);
+    url.searchParams.append("id", e.target.value);
     console.log(url);
     fetch(url, {
       method: 'DELETE',
@@ -110,25 +110,25 @@ class Alarm extends React.Component {
       <div className="alarm_css">
         <h2>Alarm</h2>
         <div className="alarm">
+        <button className="alarm_add_btn" onClick={this.clickBtnHandler.bind(this)}>+</button>
           {
             data && data.map((data) => {
               const { id, time, question } = data;
               return (
                 <li key={id}>
                   <div>
-                    <span className="time">{time}</span>
                     <label className="switch">
                       <input type="checkbox" onClick={() => { console.log('hi!') }} />
                       <span className="slider"></span>
                     </label>
                     <button className="delete" onClick={this.deleteHandler.bind(this)} value={id}>&#10060;</button>
+                    <span className="time">{time}</span>
                     <span className="question">{question}</span>
                   </div>
                 </li>
               )
             })
           }
-          <button className="alarm_add_btn" onClick={this.clickBtnHandler.bind(this)}>+</button>
           <div className={isAdd ? "modal" : "none"}>
             <div className="content">
               <button onClick={this.clickBtnHandler.bind(this)} value="확인">확인</button>
