@@ -10,7 +10,7 @@ class Alarm extends React.Component {
       isAdd: false,
       time: "",
       question: "따라쓰기",
-      curTime: null
+      curTime: null,
     }
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
@@ -32,6 +32,15 @@ class Alarm extends React.Component {
       () => this.checkAlarmClock(),
       1000
     )
+  }
+
+  getData(){
+    fetch(`http://www.gijigae.com:3000/alarm/${this.props.id}`)
+    .then((res) => res.json())
+    .then((data) => this.setState({
+      ...this.state,
+      data: data
+    }))
   }
 
   componentWillUnmount() {
@@ -58,8 +67,9 @@ class Alarm extends React.Component {
           question: this.state.question,
           time: this.state.time
         })
-      }).then((res) => res.json)
-        .then((data) => console.log(data));
+      }).then(() => {
+        this.getData();
+      })
     }
 
     this.setState((curState) => {
@@ -91,18 +101,24 @@ class Alarm extends React.Component {
     this.state.data && this.state.data.map((cur) => {
       const { time } = cur;
       if (time === this.state.curTime) {
-        alert(`it's time`);
+        this.props.isAlarmHandler();
       }
     })
   }
+
   deleteHandler(e) {
     const url = new URL(`http://www.gijigae.com:3000/alarm/${this.props.id}`);
     url.searchParams.append("id", e.target.value);
     console.log(url);
     fetch(url, {
       method: 'DELETE',
+    }).then(() => {
+      this.getData();
     })
   }
+  
+  
+
 
   render() {
     const { data, isAdd } = this.state;
@@ -110,19 +126,21 @@ class Alarm extends React.Component {
       <div className="alarm_css">
         <h2>Alarm</h2>
         <div className="alarm">
-        <button className="alarm_add_btn" onClick={this.clickBtnHandler.bind(this)}>+</button>
+          <button className="alarm_add_btn" onClick={this.clickBtnHandler.bind(this)}>+</button>
           {
             data && data.map((data) => {
               const { id, time, question } = data;
               return (
                 <li key={id}>
                   <div>
-                    <label className="switch">
-                      <input type="checkbox" onClick={() => { console.log('hi!') }} />
+                    <label className= {"switch"}>
+                      <input type="checkbox"/>
                       <span className="slider"></span>
                     </label>
                     <button className="delete" onClick={this.deleteHandler.bind(this)} value={id}>&#10060;</button>
-                    <span className="time">{time}</span>
+                    <span className="time">{
+                      Number(time.slice(0, 2)) >= 12 ? `오후 ${Number(time.slice(0,2))===12 ? time.slice(0,5) :`0`+Number(time.slice(0, 2) - 12) + time.slice(2, 5)}` : `오전 ${time.slice(0, 5)}`
+                    }</span>
                     <span className="question">{question}</span>
                   </div>
                 </li>

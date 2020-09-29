@@ -5,7 +5,13 @@
     border : 0px solid black;
     padding : 30px;
     margin : 20px;
-    box-shadow: 2px 2px 30px 0px;
+    box-shadow: 2px 2px 30px 0px black;
+    color : black;
+}
+
+.alarm .switchOff {
+  opacity: 0.6;
+  box-shadow: 1px 1px 10px 0px black;
 }
 
 /* list들의 전체 css 담당 */
@@ -57,12 +63,11 @@
     border-radius: 50%;
   }
 
-  input:checked + .slider:before {
+  input:checked + .slider:before{
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
-
 
 
 /* 알람 list들에 들어가는 미션 css 담당 */
