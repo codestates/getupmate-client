@@ -17,9 +17,9 @@ class Signin extends React.Component {
     })
   }
 
-  onClickSignin() {
+  async onClickSignin() {
     const { isLoginHandler, setUserHandler } = this.props;
-    fetch('http://www.gijigae.com:3000/user/signin', {
+    let findUser = await fetch('http://www.gijigae.com:3000/user/signin', {
       method: 'POST',
       body: JSON.stringify({
         email: this.state.email,
@@ -29,26 +29,17 @@ class Signin extends React.Component {
         "Content-type": "application/json"
       }
     })
-      .then(response => response.json())
-      .then(json => {
-        // console.log("signin json:", json)
-
-        // console.log("signin json.photo buffer:", Buffer.from(json.photo))
-        // let imgsrc = `http://www.gijigae.com:3000/upload/${Buffer.from(json.photo).toString('utf8')}`
-        // console.log("imgsrc:", imgsrc);
-
-        // signin하면서 App.js의 state 업데이트
-        setUserHandler(json.id, json.email, json.photo, json.nickname)
-        window.sessionStorage.setItem('id', json.id);
-        window.sessionStorage.setItem('email', json.email);
-        window.sessionStorage.setItem('photo', json.photo);
-        window.sessionStorage.setItem('nickname', json.nickname);
-        // login: false->true
-        isLoginHandler()
-      })
-      .catch((err) => {
-        alert('등록되지 않은 유저입니다.')
-      });
+    let user = await findUser.json();
+    console.log('user : ', user);
+    let findImg = await fetch(`http://www.gijigae.com:3000/upload/${user.id}-photo.jpeg`);
+    console.log('img : ', findImg);
+    setUserHandler(user.id, user.email, findImg.url, user.nickname)
+    window.sessionStorage.setItem('id', user.id);
+    window.sessionStorage.setItem('email', user.email);
+    window.sessionStorage.setItem('photo', findImg.url);
+    window.sessionStorage.setItem('nickname', user.nickname);
+    // login: false->true
+    isLoginHandler()
   }
 
 
