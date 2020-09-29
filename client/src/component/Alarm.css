@@ -9,6 +9,11 @@
     color : black;
 }
 
+.alarm .true{
+  opacity: 0.6;
+  box-shadow : none;
+}
+
 .alarm .switchOff {
   opacity: 0.6;
   box-shadow: 1px 1px 10px 0px black;
@@ -41,7 +46,7 @@ label {
     right: 0;
     bottom: 0;
     background-color: #2196F3;
-    transition: .4s;
+    transition: .1s;
     border-radius: 34px;
   }
 /* 토글버튼 담당 -> 알람이 꺼져있을 때*/
@@ -56,7 +61,7 @@ label {
   bottom: 0;
   background-color: #ccc;
   -webkit-transition: .4s;
-  transition: .4s;
+  transition: .1s;
   border-radius: 34px;
 }
 
@@ -70,8 +75,8 @@ label {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .2s;
-    transition: .2s;
+    -webkit-transition: .1s;
+    transition: .1s;
   } 
 
 
@@ -85,8 +90,8 @@ label {
   left: 35px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .2s;
-  transition: .2s;
+  -webkit-transition: .1s;
+  transition: .1s;
 } 
 
 

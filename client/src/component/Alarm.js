@@ -102,7 +102,7 @@ class Alarm extends React.Component {
   checkAlarmClock() {
     this.state.data && this.state.data.map((cur) => {
       const { time, id } = cur;
-      if (time === this.state.curTime && Boolean(window.localStorage.getItem(id)) !== true) {
+      if (time === this.state.curTime && (window.localStorage.getItem(id) !== "true")) {
         this.props.curAlarm_numHandler(id);
         this.props.isAlarmHandler();
       }
@@ -126,7 +126,7 @@ class Alarm extends React.Component {
 
 
   render() {
-    const { data, isAdd} = this.state;
+    const { data, isAdd } = this.state;
     return (
       <div className="alarm_css">
         <h2>Alarm</h2>
@@ -137,11 +137,11 @@ class Alarm extends React.Component {
               const { id, time, question } = data;
               window.localStorage.getItem(id) === null ? window.localStorage.setItem(id, false) : window.localStorage.getItem(id);
               return (
-                <li key= {id}>
+                <li key={id} className={window.localStorage.getItem(id)}>
                   <div>
-                    <label className= {window.localStorage.getItem(id)}>
-                      <input type="checkbox"  onClick={(e) => {
-                         this.alarm_onHandler(id, e.target.checked);
+                    <label className={window.localStorage.getItem(id)}>
+                      <input type="checkbox" onClick={(e) => {
+                        this.alarm_onHandler(id, e.target.checked);
                       }
                       } />
                       <span className="slider"></span>
