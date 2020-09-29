@@ -8,7 +8,8 @@ export default class AlarmRing extends React.Component {
       mission_on: false,
       question: "",
       answer: "",
-      userAnswer: ""
+      userAnswer: "",
+      time: ""
     }
   }
 
@@ -27,7 +28,8 @@ export default class AlarmRing extends React.Component {
       .then((data) => this.setState({
         ...this.state,
         question: data.question,
-        answer: data.answer
+        answer: data.answer,
+        time: data.time
       }))
   }
 
@@ -39,24 +41,28 @@ export default class AlarmRing extends React.Component {
 
   render() {
     const { isAlarm, isAlarmHandler } = this.props;
-    const { mission_on, answer, userAnswer, missionHandler} = this.state;
+    const { mission_on, answer, userAnswer, time } = this.state;
     return (
       <div className="modals">
         <div className={isAlarm ? "isAlarm" : "none"}>
           <div className="content">
             <button className="alarm_cancel" onClick={this.missionHandler.bind(this)}>알람해제</button>
-            <h2>01:34</h2>
+            <h2>{time}</h2>
           </div>
         </div>
 
         <div className={mission_on ? "isAlarm" : "none"}>
           <div className="content">
             <button className="alarm_cancel" onClick={() => {
-              isAlarmHandler();
-              this.setState({
-                ...this.state,
-                mission_on : false
-              })
+              if (answer === userAnswer) {
+                isAlarmHandler();
+                this.setState({
+                  ...this.state,
+                  mission_on: false
+                })
+              } else {
+                alert("답을 다시 입력해주세요");
+              }
             }}>확인</button>
             <div className="mission">
               <h2 className="question">문제</h2>
