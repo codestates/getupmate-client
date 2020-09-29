@@ -83,7 +83,7 @@ class MyPage extends React.Component {
   changeNickname() {
     const { setNicknameHandler, id } = this.props;
     if (this.state.changeClick && this.state.nickname) {
-      fetch(`http://www.gijigae.com:3000//user/changenickname/${id}`, {
+      fetch(`http://www.gijigae.com:3000/user/changenickname/${id}`, {
         method: 'POST',
         body: JSON.stringify({
           nickname: this.state.nickname
