@@ -177,7 +177,7 @@ class App extends React.Component {
           }} />
           <Route exact path="/friends" render={() => {
             if (isLogin) {
-              return <Friends />
+              return <Friends id={id}/>
             }
             return <Redirect to="/signin" />
           }} />

@@ -7,8 +7,20 @@ class Friends extends React.Component {
     super(props);
     this.state = {
       searchWord: "",
-      userList: null
+      userList: null,
+      myFriendList: null
     }
+  }
+
+  componentDidMount() {
+    fetch(`http://www.gijigae.com:3000/follow/friends/${this.props.id}`)
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({
+          ...this.state,
+          myFriendList: data
+        })
+      )
   }
 
   onChangeHandler(e) {
@@ -38,7 +50,7 @@ class Friends extends React.Component {
   }
 
   render() {
-    const { userList } = this.state
+    const { userList, myFriendList } = this.state
     return (
       <div className="friends">
         <h2>Friends</h2>
@@ -50,6 +62,18 @@ class Friends extends React.Component {
           />
           <button onClick={this.searchUser.bind(this)}>검색</button>
         </form>
+
+        {
+          myFriendList && myFriendList.map((friend) => {
+            const { id, nickname, photo } = friend;
+            return (
+              <li id={id}>
+                <span>{photo}</span>
+                <span>{nickname}</span>
+              </li>
+            )
+          })
+        }
         <ul>
           {userList && userList.map((data) => {
             const { id, nickname } = data;
