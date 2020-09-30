@@ -171,9 +171,10 @@ class MyPage extends React.Component {
           <ul>
             {
               feed && feed.map((data) => {
-                const { id, text } = data;
+                const { id, text, photo } = data;
                 return (
                   <li key={id}>
+                    <img src={photo || profile_pic}></img>
                     <div>{text}</div>
                   </li>
                 )

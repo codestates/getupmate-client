@@ -1,5 +1,6 @@
 import React from "react"
 import "./Home.css"
+import profile_pic from '../profile_pic.png';
 import { withRouter } from "react-router-dom"
 
 class Home extends React.Component {
@@ -31,9 +32,10 @@ class Home extends React.Component {
           <ul>
             {
               feed && feed.map((data) => {
-                const { id, text } = data;
+                const { id, text, photo } = data;
                 return (
                   <li key={id}>
+                    <img src={photo || profile_pic}></img>
                     <div>{text}</div>
                   </li>
                 )
