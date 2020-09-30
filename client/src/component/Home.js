@@ -12,10 +12,10 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://www.gijigae.com:3000/feed/myfeed/${this.props.id}`)
+    fetch(`http://www.gijigae.com:3000/feed/homefeed/${this.props.id}`)
       .then(res => res.json())
       .then(json => {
-        console.log("get myfeed:", json)
+        console.log("home feed:", json)
         this.setState({
           feed: json
         })
@@ -23,7 +23,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log("feed:", this.state.feed)
     const { feed } = this.state
     return (
       <div>
@@ -32,9 +31,9 @@ class Home extends React.Component {
           <ul>
             {
               feed && feed.map((data) => {
-                const { user_id, text } = data;
+                const { id, text } = data;
                 return (
-                  <li key={user_id}>
+                  <li key={id}>
                     <div>{text}</div>
                   </li>
                 )

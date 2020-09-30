@@ -63,3 +63,21 @@
     display : none;
 }
 
+/* feed css 담당 */
+.MyPage_feed {
+    padding : 0px;
+    font-size: 20px;
+}
+
+.MyPage_feed ul {
+    padding-left: 0;
+}
+
+.MyPage_feed li {
+    list-style-type: none;
+    border : 0px solid black;
+    padding : 30px;
+    margin : 20px;
+    box-shadow: 2px 2px 30px 0px black;
+    color : black;
+}

@@ -11,10 +11,23 @@ class MyPage extends React.Component {
       changeClick: false,
       photo: null,
       previewPhoto: null,
-      openModal: false
+      openModal: false,
+      feed: null,
     }
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
     window.sessionStorage.setItem('photo', this.props.photo);
+  }
+
+  componentDidMount() {
+    // 마이페이지 피드 불러오기
+    fetch(`http://www.gijigae.com:3000/feed/myfeed/${this.props.id}`)
+      .then(res => res.json())
+      .then(json => {
+        console.log("mypage feed:", json)
+        this.setState({
+          feed: json
+        })
+      })
   }
 
   onChangeHandler(e) {
@@ -109,6 +122,7 @@ class MyPage extends React.Component {
   }
 
   render() {
+    const { feed } = this.state
     return (
       <div className="MyPage">
         <h2>My Page</h2>
@@ -152,6 +166,20 @@ class MyPage extends React.Component {
               onClick={this.signoutHandler.bind(this)}
             >Sign out</button>
           </div>
+        </div>
+        <div className="MyPage_feed">
+          <ul>
+            {
+              feed && feed.map((data) => {
+                const { id, text } = data;
+                return (
+                  <li key={id}>
+                    <div>{text}</div>
+                  </li>
+                )
+              })
+            }
+          </ul>
         </div>
       </div>
     )
