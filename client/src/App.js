@@ -20,8 +20,9 @@ class App extends React.Component {
       nickname: '',
       email: '',
       photo: null,
-      isAlarm : false,
-      curAlarm_num : null
+      isAlarm: false,
+      curAlarm_num: null,
+      question: ''
     }
   }
 
@@ -40,10 +41,45 @@ class App extends React.Component {
   }
 
   isAlarmHandler() {
+    // 알람 켤 때
+    if (this.state.isAlarm === false) {
+      this.setState({
+        ...this.state,
+        isAlarm: true
+      })
+    }
+    // 알람 끌 때 ---> makefeed 요청하기
+    else {
+      this.makeFeedHandler()
+      this.setState({
+        ...this.state,
+        isAlarm: false
+      })
+    }
+  }
+
+  setQuestionHandler(value) {
     this.setState({
       ...this.state,
-      isAlarm: !this.state.isAlarm
+      question: value
     })
+  }
+
+  makeFeedHandler() {
+    console.log((new Date().toLocaleTimeString('it-IT')).slice(0, 5), "mission complete!")
+    let text = `${this.state.nickname}님이 ${this.state.question}를 풀어서
+                ${(new Date().toLocaleTimeString('it-IT')).slice(0, 5)}에 기상하셨습니다.`
+    fetch(`http://www.gijigae.com:3000/feed/makefeed/${this.state.id}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        text: text
+      })
+    })
+      .then(res => res.json())
+      .then(json => console.log(json))
   }
 
   isLoginHandler() {
@@ -80,16 +116,22 @@ class App extends React.Component {
   curAlarm_numHandler(value) {
     this.setState({
       ...this.state,
-      curAlarm_num : value
+      curAlarm_num: value
     })
   }
 
   render() {
-    const { isLogin,isAlarm, curAlarm_num, id} = this.state
+    const { isLogin, isAlarm, curAlarm_num, id, question } = this.state
     return (
       <div className="App">
         <Tab isLogin={isLogin} />
-        <AlarmRing isAlarm = {isAlarm} isAlarmHandler= {this.isAlarmHandler.bind(this)} curAlarm_num={curAlarm_num} id={id}/>
+        <AlarmRing
+          isAlarm={isAlarm}
+          isAlarmHandler={this.isAlarmHandler.bind(this)}
+          curAlarm_num={curAlarm_num}
+          id={id}
+          setQuestionHandler={this.setQuestionHandler.bind(this)}
+        />
         <Switch >
           <Route path="/signin" render={() => {
             if (isLogin) {
@@ -129,7 +171,7 @@ class App extends React.Component {
           }} />
           <Route exact path="/alarm" render={() => {
             if (isLogin) {
-              return <Alarm  id={this.state.id} isAlarmHandler={this.isAlarmHandler.bind(this)} curAlarm_num={curAlarm_num} curAlarm_numHandler={this.curAlarm_numHandler.bind(this)}/>
+              return <Alarm id={this.state.id} isAlarmHandler={this.isAlarmHandler.bind(this)} curAlarm_num={curAlarm_num} curAlarm_numHandler={this.curAlarm_numHandler.bind(this)} />
             }
             return <Redirect to="/signin" />
           }} />
