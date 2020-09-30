@@ -10,8 +10,7 @@
 }
 
 .alarm .true{
-  opacity: 0.6;
-  box-shadow : none;
+  opacity: 0.5;
 }
 
 .alarm .switchOff {
@@ -27,7 +26,7 @@
 
 
 /* 토글버튼 크기 담당*/
-label {
+label{
     position: relative;
     display: inline-block;
     width: 58px;
@@ -143,7 +142,7 @@ label {
   right:0;
   top:0;
   bottom:0;
-  z-index: 1;
+  z-index: 10;
   cursor: pointer;
   background: rgba(0,0,0,0.3);
 }
@@ -154,11 +153,12 @@ left:50%;
 top:50%;
 z-index: 2;
 transform: translate3d(-50%, -50%, 0);
-background:#fff;
+background: whitesmoke;
 padding: 0px;
 box-shadow: 0 0 5px #000;
 width: 400px;
 height: 530px;
+border-radius: 30px 30px 0px 0px;
 }
 
 /* 모달의 classname 이 none 일 때는 display하지 않는다. */
@@ -168,8 +168,8 @@ height: 530px;
 
 /* 확인, 취소 버튼 css 담당 */
 .content button {
-  background-color: #555555;
-  border: none;
+  background-color: rebeccapurple;
+  border : none;
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -194,7 +194,7 @@ height: 530px;
   margin : 0;
   position: relative;
   top : -30px;
-  left : -30px;
+  left : center;
   color : #030101;
   text-shadow: none;
 }
@@ -206,7 +206,7 @@ height: 530px;
   width : 300px;
   height: 50px;
   position : relative;
-  left : 40px;
+  left : 50px;
 }
 
 /* select 의 label display담당 */
@@ -221,7 +221,7 @@ select {
   padding: .9em .5em; /* 여백으로 높이 설정 */
   font-family: inherit;  /* 폰트 상속 */
   position : relative;
-  left : 40px;
+  left : 50px;
   margin-bottom : 30px;
   font-size: 15px;
 }
@@ -235,7 +235,7 @@ select {
   padding :10px;
   text-align: center;
   position : relative;
-  left : 40px;
+  left : 50px;
   font-size: 18px;
 }
 
@@ -244,8 +244,8 @@ select {
   position: relative;
   left : 290px;
   border-radius: 50%;
-  width : 40px;
-  height: 40px;
+  width : 30px;
+  height: 30px;
   top : -5px;
 }
 
@@ -255,4 +255,24 @@ select {
   position: relative;
   right : 50px;
   font-size: 25px;
+}
+
+
+/* 스크롤 바 css*/
+.alarm {
+  width: 470px;
+  height: 700px;
+  overflow: auto;
+}
+.alarm::-webkit-scrollbar {
+  width: 12px;
+}
+.alarm::-webkit-scrollbar-thumb {
+  background-color: rebeccapurple;
+  border-radius: 10px;
+}
+.alarm::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
 }

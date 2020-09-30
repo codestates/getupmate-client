@@ -11,21 +11,25 @@
   font-size: 13px;
   margin: 0px;
   width : 120px; 
-  height: 60px; 
+  height: 70px; 
+  border-radius: 20px;
 }
 
 /* tab button에 마우스를 올려놓았을 시 적용*/
 
 .tabs button:hover {
-  background-color: #777;
+  color : rgb(251, 125, 255);
   cursor: pointer;
+  font-size: 15px;
 }
 
 /* absolute포지션으로 적용*/
 .tabs {
   position: absolute;
-  top : 801px;
+  top : 791.5px;
   z-index: 7;
+  background-color: #555555;
+  border-radius: 0px 0px 20px 20px;
 }
 /* tab의 className이 none일 때 = 현재 signin, signup 페이지일 때는 tab이 보이지 않는다 .*/
 .none {
