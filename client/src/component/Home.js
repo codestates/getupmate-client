@@ -8,6 +8,7 @@ class Home extends React.Component {
     this.state = {
       feed: null
     }
+    window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
 
   componentDidMount() {

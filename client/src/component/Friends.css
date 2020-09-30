@@ -27,3 +27,73 @@
     box-shadow: 2px 2px 30px 0px black;
     color : black;
 }
+
+
+
+/* 스크롤 바 css*/
+
+
+.searchList{
+    width: 470px;
+  height: 700px;
+  overflow: auto;
+}
+
+.searchList::-webkit-scrollbar {
+    width: 12px;
+  }
+  .searchList::-webkit-scrollbar-thumb {
+    background-color: rebeccapurple;
+    border-radius: 10px;
+  }
+  .searchList::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+
+  label{
+    position: relative;
+    display: inline-block;
+    width: 58px;
+    height: 27px;
+    left :260px;
+    top : -5px;
+  } 
+
+  .follow {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(94, 152, 240);
+    transition: .1s;
+    border-radius: 34px;
+    color : black;
+    font-size: 15px;
+    text-align: center;
+  } 
+
+  .unfollow {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(116, 106, 106);
+    transition: .1s;
+    border-radius: 34px;
+    color : black;
+    font-size: 15px;
+    text-align: center;
+  } 
+
+
+
+  
+
+  
