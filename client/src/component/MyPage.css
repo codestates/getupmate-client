@@ -81,3 +81,22 @@
     box-shadow: 2px 2px 30px 0px black;
     color : black;
 }
+
+/* 스크롤 바 css*/
+.MyPage_feed ul {
+    width: 470px;
+    height: 700px;
+    overflow: auto;
+  }
+  .MyPage_feed ul::-webkit-scrollbar {
+    width: 12px;
+  }
+  .MyPage_feed ul::-webkit-scrollbar-thumb {
+    background-color: rebeccapurple;
+    border-radius: 10px;
+  }
+  .MyPage_feed ul::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
