@@ -2,7 +2,7 @@
 .MyPage_profile {
     display: flex;
     background-color: rgba(255, 255, 255, 0.8);
-    width: 90%;
+    width: 92%;
     margin: auto;
     align-items: top;
 }
@@ -12,6 +12,7 @@
     border: 1px solid rgb(60, 60, 60);
     border-radius: 50%;
     width: 120px;
+    height: 120px;
     margin: 20px;
 }
 
@@ -74,10 +75,25 @@
 }
 
 .MyPage_feed li {
+    display: flex;
     list-style-type: none;
     border : 0px solid black;
-    padding : 30px;
+    padding : 20px;
     margin : 20px;
     box-shadow: 2px 2px 30px 0px black;
     color : black;
+}
+
+.MyPage_feed img {
+    float: left;
+    border: 1px solid rgb(60, 60, 60);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.MyPage_feed div {
+    display: inline-block;
+    margin: auto;
 }
