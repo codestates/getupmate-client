@@ -117,6 +117,8 @@ class Alarm extends React.Component {
       method: 'DELETE',
     }).then(() => {
       this.getData();
+    }).then(() => {
+      window.localStorage.removeItem(e.target.value);
     })
   }
 
