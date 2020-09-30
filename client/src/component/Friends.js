@@ -116,7 +116,7 @@ class Friends extends React.Component {
 
 
   render() {
-    const { userList, myFriendList, isFollow } = this.state
+    const { userList, myFriendList, isFollow, searchWord } = this.state
     console.log(this.state.myFriendList);
     return (
       <div className="friends">
@@ -129,7 +129,7 @@ class Friends extends React.Component {
           />
           <button onClick={this.searchUser.bind(this)} className="searchBtn">검색</button>
         </form>
-        {/* <ul >
+        <ul className={searchWord.length? "none" : "myFriend"}>
           {
             myFriendList && myFriendList.map((friend) => {
               const { id, nickname, photo } = friend;
@@ -141,16 +141,17 @@ class Friends extends React.Component {
                       this.checkFollow(id) ? "unfollow" : "follow"
                     }</span>
                   </label>
-                  <span>{photo}</span>
-                  <span>{nickname}</span>
+                  <img src = {photo} className = "photo"/>
+                  <span className="nickname">{nickname}</span>
                 </li>
               )
             })
           }
-        </ul> */}
-        <ul className="searchList">
+        </ul>
+        <ul className={searchWord.length? "searchList" : "none"}>
           {userList && userList.map((data) => {
-            const { id, nickname } = data;
+            console.log(data);
+            const { id, nickname, photo } = data;
             return (
               <li key={id}>
                 <div>
@@ -160,9 +161,11 @@ class Friends extends React.Component {
                       this.checkFollow(id) ? "unfollow" : "follow"
                     }</span>
                   </label>
-                  <span>
+                  <img src = {photo} className = "photo"/>
+                  <span className="nickname">
                     {nickname}
                   </span>
+                  
                 </div>
               </li>
             )
