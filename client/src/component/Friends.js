@@ -67,7 +67,7 @@ class Friends extends React.Component {
     console.log(e.target.follow);
 
     /* 언팔로우 요청 */
-    if (e.target.follow) {
+    if (e.target.follow === "true") {
       const url = new URL(`http://www.gijigae.com:3000/follow/unfollow/${this.props.id}`);
       url.searchParams.append("id", e.target.value);
       fetch(url, {
@@ -146,7 +146,7 @@ class Friends extends React.Component {
               <li key={id}>
                 <div>
                   <label>
-                    <input type="checkbox" value={id} follow={this.checkFollow(id)} onClick={this.followBtnHandler.bind(this)
+                    <input type="checkbox" value={id} follow={this.checkFollow(id).toString()} onClick={this.followBtnHandler.bind(this)
                     } />
                     <span className={this.checkFollow(id) ? "unfollow" : "follow"}>{
                       this.checkFollow(id) ? "unfollow" : "follow"
