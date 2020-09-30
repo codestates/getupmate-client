@@ -25,6 +25,7 @@
 .tabs {
   position: absolute;
   top : 801px;
+  z-index: 7;
 }
 /* tab의 className이 none일 때 = 현재 signin, signup 페이지일 때는 tab이 보이지 않는다 .*/
 .none {

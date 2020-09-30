@@ -126,7 +126,8 @@ label {
   position: relative;
   top : 500px;
   left : 380px;
-  color : wheat
+  color : wheat;
+  z-index: 1;
 }
 
 .alarm_add_btn:hover{
