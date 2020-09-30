@@ -12,9 +12,6 @@ export default class AlarmRing extends React.Component {
     }
   }
 
-
-
-
   missionHandler() {
     this.setState({
       mission_on: !this.state.mission_on
@@ -24,11 +21,16 @@ export default class AlarmRing extends React.Component {
     console.log("url은", url);
     fetch(url)
       .then((res) => res.json())
-      .then((data) => this.setState({
-        ...this.state,
-        question: data.question,
-        answer: data.answer
-      }))
+      .then((data) => {
+        // 피드 생성용
+        this.props.setQuestionHandler(data.question)
+        // 미션 생성용
+        this.setState({
+          ...this.state,
+          question: data.question,
+          answer: data.answer
+        })
+      })
   }
 
   onChangeHandler(e) {
@@ -45,7 +47,7 @@ export default class AlarmRing extends React.Component {
         <div className={isAlarm ? "isAlarm" : "none"}>
           <div className="content">
             <button className="alarm_cancel" onClick={this.missionHandler.bind(this)}>알람해제</button>
-            <h2>{(new Date().toLocaleTimeString('it-IT')).slice(0,5)}</h2>
+            <h2>{(new Date().toLocaleTimeString('it-IT')).slice(0, 5)}</h2>
           </div>
         </div>
 
