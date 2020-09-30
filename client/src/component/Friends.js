@@ -8,11 +8,24 @@ class Friends extends React.Component {
     this.state = {
       searchWord: "",
       userList: null,
-      myFriendList: null
+      myFriendList: null,
     }
+    window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
 
   componentDidMount() {
+    fetch(`http://www.gijigae.com:3000/follow/friends/${this.props.id}`)
+      .then((res) => res.json())
+      .then((data) =>
+        this.setState({
+          ...this.state,
+          myFriendList: data
+        })
+      )
+  }
+
+
+  getMyFriend() {
     fetch(`http://www.gijigae.com:3000/follow/friends/${this.props.id}`)
       .then((res) => res.json())
       .then((data) =>
@@ -31,7 +44,7 @@ class Friends extends React.Component {
 
   searchUser(e) {
     e.preventDefault();
-    fetch(`http://www.gijigae.com:3000/user/searchUser`, {
+    fetch(`http://www.gijigae.com:3000/user/searchuser`, {
       method: 'POST',
       body: JSON.stringify({
         data: this.state.searchWord
@@ -49,8 +62,59 @@ class Friends extends React.Component {
       })
   }
 
+  followBtnHandler(e) {
+    console.log(e.target.value);
+    console.log(e.target.follow);
+
+    /* 언팔로우 요청 */
+    if (e.target.follow) {
+      const url = new URL(`http://www.gijigae.com:3000/follow/unfollow/${this.props.id}`);
+      url.searchParams.append("id", e.target.value);
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        }
+      }).they(() => {
+        this.getMyFriend();
+      })
+    }
+    /* 팔로우 요청 */
+    else {
+      const url = new URL(`http://www.gijigae.com:3000/follow/${this.props.id}`);
+      url.searchParams.append("id", e.target.value);
+
+      console.log(url);
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        }
+      }).then(() => {
+        this.getMyFriend();
+      })
+    }
+
+  }
+
+
+  checkFollow(id) {
+    const { myFriendList } = this.state;
+    if (!myFriendList) {
+      return false;
+    }
+    for (let value of myFriendList) {
+      for (let key in value) {
+        if (value[key] === id) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   render() {
-    const { userList, myFriendList } = this.state
+    const { userList, myFriendList, isFollow } = this.state
     return (
       <div className="friends">
         <h2>Friends</h2>
@@ -60,30 +124,37 @@ class Friends extends React.Component {
             placeholder="이메일 혹은 닉네임을 검색해주세요"
             onChange={this.onChangeHandler.bind(this)}
           />
-          <button onClick={this.searchUser.bind(this)}>검색</button>
+          <button onClick={this.searchUser.bind(this)} className="searchBtn">검색</button>
         </form>
-
-        {
-          myFriendList && myFriendList.map((friend) => {
-            const { id, nickname, photo } = friend;
-            return (
-              <li id={id}>
-                <span>{photo}</span>
-                <span>{nickname}</span>
-              </li>
-            )
-          })
-        }
         <ul>
+          {
+            myFriendList && myFriendList.map((friend) => {
+              const { id, nickname, photo } = friend;
+              return (
+                <li id={id}>
+                  <span>{photo}</span>
+                  <span>{nickname}</span>
+                </li>
+              )
+            })
+          }
+        </ul>
+        <ul className="searchList">
           {userList && userList.map((data) => {
             const { id, nickname } = data;
             return (
               <li key={id}>
                 <div>
+                  <label>
+                    <input type="checkbox" value={id} follow={this.checkFollow(id)} onClick={this.followBtnHandler.bind(this)
+                    } />
+                    <span className={this.checkFollow(id) ? "unfollow" : "follow"}>{
+                      this.checkFollow(id) ? "unfollow" : "follow"
+                    }</span>
+                  </label>
                   <span>
                     {nickname}
                   </span>
-                  <button>follow</button>
                 </div>
               </li>
             )
@@ -93,6 +164,5 @@ class Friends extends React.Component {
     )
   }
 }
-
 
 export default withRouter(Friends);
