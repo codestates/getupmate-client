@@ -57,7 +57,6 @@ class Alarm extends React.Component {
   }
 
   clickBtnHandler(e) {
-    console.log(this.state.question);
     if (e.target.value === "확인") {
       fetch(`http://www.gijigae.com:3000/alarm/${this.props.id}`, {
         method: "POST",
@@ -84,7 +83,7 @@ class Alarm extends React.Component {
 
   onChangeHandler(e) {
     // console.log(typeof(e.target.value)); string으로 나온다 .
-    console.log(e.target.value);
+    // console.log(e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     })

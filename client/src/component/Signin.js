@@ -31,9 +31,9 @@ class Signin extends React.Component {
       }
     })
     let user = await findUser.json();
-    console.log('user : ', user);
+    // console.log('user : ', user);
     let findImg = await fetch(`http://www.gijigae.com:3000/upload/${user.id}-photo.jpeg`);
-    console.log('img : ', findImg);
+    // console.log('img : ', findImg);
     if (findImg.status === 404) {
       setUserHandler(user.id, user.email, profile_pic, user.nickname)
       window.sessionStorage.setItem('photo', profile_pic);
