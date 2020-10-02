@@ -56,8 +56,6 @@ class Signin extends React.Component {
   async socialLoginHandelr(){
     const { isLoginHandler, setUserHandler } = this.props;
     let findUser = await fetch("http://www.gijigae.com:3000/auth/google/callback")
-    .then((res) => res.json())
-    .then((data) => console.log(data))
 
     let user = await findUser.json();
     console.log(user);
