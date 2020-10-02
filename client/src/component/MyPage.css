@@ -1,12 +1,11 @@
 /* profile 박스 css 담당 */
 .MyPage_profile {
     display: flex;
-    background-color: rgba(5, 0, 0, 0.8);
+    background-color: rgba(5, 0, 0, 0.4);
     width: 92%;
     margin: auto;
     align-items: top;
     border-radius: 10px;
-    opacity: 0.8;
     color : white;
 }
 
@@ -21,7 +20,43 @@
 
 /* 닉네임 css 담당 */
 .MyPage_nickname {
+    position: absolute;
     margin: auto;
+}
+
+.MyPage_nickname .nickname {
+    position: absolute;
+    left: 160px;
+    top: 50px;
+    width: 270px;
+}
+
+.MyPage_nickname span{
+    font-size: 1.5rem;
+    word-break: break-all;
+}
+
+.MyPage_nickname input{
+    font-size: 1.5rem;
+    width: 230px;
+}
+
+.MyPage_nickname button{
+    border: none;
+    background: none;
+    color: white;
+}
+
+.MyPage_nickname .nicknameBtn {
+    font-size: 1.5rem;
+    margin-left: 5px;
+}
+
+.MyPage_nickname .signout {
+    position: absolute;
+    width: 80px;
+    left: 350px;
+    top: 130px
 }
 
 /* 모달창 css 담당 */
@@ -81,6 +116,8 @@
     display: flex;
     list-style-type: none;
     border : 0px solid black;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
     padding : 20px;
     margin : 20px;
     box-shadow: 2px 2px 30px 0px black;

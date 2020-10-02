@@ -157,14 +157,16 @@ class MyPage extends React.Component {
           </div>
           <div className="MyPage_nickname">
             {this.state.changeClick
-              ? <input type="text" onChange={this.onChangeHandler.bind(this)} />
-              : <span>{this.props.nickname}</span>}
+              ? <div className="nickname">
+                <input type="text" onChange={this.onChangeHandler.bind(this)} />
+                <button onClick={this.changeNickname.bind(this)} className="nicknameBtn">✓</button>
+              </div>
+              : <div className="nickname">
+                <span>{this.props.nickname}</span>
+                <button onClick={this.changeNickname.bind(this)} className="nicknameBtn">✐</button>
+              </div>}
             <button
-              onClick={this.changeNickname.bind(this)}
-            >✏️</button>
-            <button
-              onClick={this.signoutHandler.bind(this)
-              } className="signout"
+              onClick={this.signoutHandler.bind(this)} className="signout"
             >Sign out</button>
           </div>
         </div>

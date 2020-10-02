@@ -36,7 +36,6 @@ input::placeholder{
     margin: 8px;
     padding: 0 10px;
     height: 40px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /*소셜로그인 링크 css 담당 */
