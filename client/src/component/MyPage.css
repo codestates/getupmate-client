@@ -1,10 +1,13 @@
 /* profile 박스 css 담당 */
 .MyPage_profile {
     display: flex;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(5, 0, 0, 0.8);
     width: 92%;
     margin: auto;
     align-items: top;
+    border-radius: 10px;
+    opacity: 0.8;
+    color : white;
 }
 
 /* 프로필 이미지 css 담당 */

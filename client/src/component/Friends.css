@@ -1,3 +1,6 @@
+
+
+
 .friends {
     padding : 0px;
     font-size: 20px;
@@ -5,15 +8,32 @@
 
 .friends .search {
     text-align: center;
+    height: 60px;
 }
 
 .friends .search input{
-    width: 350px;
-    font-size: 20px;
+    width: 400px;
+    height: 48px;
+    font-size: 15px;
+    color : white;
+    background-color: black;
+    opacity: 0.7;
+    position : relative;
+    top : -50px;
+    left : 0px;
 }
 
 .friends .search button{
     font-size: 20px;
+    position : relative;
+    top : -3px;
+    left : 160px;
+    height: 46px;
+    z-index : 1;
+    background-color: rgb(165, 87, 255);
+    color : black;
+    border-left : 2px solid black;
+    border-radius: 0px 10px 10px 0px;
 }
 .friends ul {
     padding-left: 0;
@@ -27,6 +47,7 @@
     box-shadow: 2px 2px 30px 0px black;
     color : black;
 }
+
 
 
 

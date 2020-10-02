@@ -163,7 +163,8 @@ class MyPage extends React.Component {
               onClick={this.changeNickname.bind(this)}
             >✏️</button>
             <button
-              onClick={this.signoutHandler.bind(this)}
+              onClick={this.signoutHandler.bind(this)
+              } className="signout"
             >Sign out</button>
           </div>
         </div>

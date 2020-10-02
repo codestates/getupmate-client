@@ -126,12 +126,12 @@ class Friends extends React.Component {
       <div className="friends">
         <h2>Friends</h2>
         <form className="search">
+        <button onClick={this.searchUser.bind(this)} className="searchBtn">search</button>
           <input
             type="text"
-            placeholder="이메일 혹은 닉네임을 검색해주세요"
+            placeholder="이메일 혹은 닉네임을 검색해주세요..."
             onChange={this.onChangeHandler.bind(this)}
           />
-          <button onClick={this.searchUser.bind(this)} className="searchBtn">검색</button>
         </form>
         <ul className={searchWord.length ? "none" : "myFriend"}>
           {
