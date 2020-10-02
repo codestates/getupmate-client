@@ -126,11 +126,11 @@ label{
   text-align: center; 
   background-color: rebeccapurple;
   font-size: 35px;
-  position: fixed;
+  position: absolute;
   color : white;
   z-index: 1;
-  left: 420px;
-  bottom: 200px;
+  left: 380px;
+  bottom: 100px;
 }
 
 
