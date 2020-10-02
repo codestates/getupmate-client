@@ -52,11 +52,19 @@
     margin-left: 5px;
 }
 
+.MyPage_nickname .nicknameBtn:hover{
+    cursor: pointer;
+}
+
 .MyPage_nickname .signout {
     position: absolute;
     width: 80px;
     left: 350px;
     top: 130px
+}
+
+.MyPage_nickname .signout:hover{
+  cursor: pointer;
 }
 
 /* 모달창 css 담당 */
