@@ -28,12 +28,30 @@ class Home extends React.Component {
     })
   }
 
+  async refresh() {
+    let getHomeFeed = await fetch(`http://www.gijigae.com:3000/feed/homefeed/${this.props.id}`)
+    let homefeed = await getHomeFeed.json();
+    Promise.all(homefeed.map(async (feed) => {
+      let imgfetch = await fetch(feed.photo)
+      if (imgfetch.status === 404) {
+        feed.photo = profile_pic
+      }
+      return feed;
+    })).then(feed => {
+      this.setState({
+        feed: feed
+      })
+    })
+  }
+
   render() {
     const { feed } = this.state
     return (
       <div>
         <h2>Home</h2>
         <div className="home">
+          <button className="refresh_btn" onClick={this.refresh.bind(this)}>⟳</button>
+
           <ul>
             {
               feed && feed.map((data) => {
