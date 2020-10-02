@@ -67,8 +67,21 @@ class App extends React.Component {
 
   makeFeedHandler() {
     console.log((new Date().toLocaleTimeString('it-IT')).slice(0, 5), "mission complete!")
+    let time;
+    let now = new Date();
+    let nowHour = now.getHours();
+    let nowMin = now.getMinutes();
+    if (nowHour <= 12 && nowHour >= 6) {
+      time = `오전 ${nowHour}시 ${nowMin}분`
+    } else if (nowHour >= 12 && nowHour < 22) {
+      time = `오후 ${nowHour - 12}시 ${nowMin}분`
+    } else if (nowHour >= 22 && nowHour <= 24) {
+      time = `밤 ${nowHour - 12}시 ${nowMin}분`
+    } else {
+      time = `새벽 ${nowHour}시 ${nowMin}분`
+    }
     let text = `${this.state.nickname}님이 ${this.state.question}를 풀어서
-                ${(new Date().toLocaleTimeString('it-IT')).slice(0, 5)}에 기상하셨습니다.`
+                ${time}에 기상하셨습니다.`
     fetch(`http://www.gijigae.com:3000/feed/makefeed/${this.state.id}`, {
       method: "POST",
       headers: {
@@ -177,7 +190,7 @@ class App extends React.Component {
           }} />
           <Route exact path="/friends" render={() => {
             if (isLogin) {
-              return <Friends id={id}/>
+              return <Friends id={id} />
             }
             return <Redirect to="/signin" />
           }} />
