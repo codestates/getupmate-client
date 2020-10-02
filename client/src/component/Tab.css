@@ -26,10 +26,9 @@
 /* absolute포지션으로 적용*/
 .tabs {
   position: absolute;
-  top : 791.5px;
+  top : 792px;
   z-index: 7;
   background-color: #555555;
-  border-radius: 0px 0px 20px 20px;
   display: flex;
   max-width: 480px;
 }
