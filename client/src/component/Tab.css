@@ -30,6 +30,8 @@
   z-index: 7;
   background-color: #555555;
   border-radius: 0px 0px 20px 20px;
+  display: flex;
+  max-width: 480px;
 }
 /* tab의 className이 none일 때 = 현재 signin, signup 페이지일 때는 tab이 보이지 않는다 .*/
 .none {
