@@ -78,8 +78,8 @@
     display: inline-block;
     width: 58px;
     height: 27px;
-    left :260px;
-    top : -5px;
+    left : 300px;
+    top : -15px;
   } 
 
   .follow {
@@ -120,22 +120,24 @@
 /* photo css */
 
 .photo {
-  width : 40px;
-  height: 40px;
+  width : 60px;
+  height: 60px;
   border: 1px solid black;
   border-radius: 50%;
   position: relative;
-  left : -40px;
+  left : -50px;
+  top: 4px;
 }
 
 .nickname {
-
   position: relative;
-  left : 0px;
-  top : -12px;
+  left : -20px;
+  top : -20px;
+  word-break: break-all;
+  width: 200px;
+  display: inline-block; 
 }
 
-  
 .friends ul{
   width: 470px;
   height: 700px;
