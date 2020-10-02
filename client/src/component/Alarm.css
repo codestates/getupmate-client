@@ -30,7 +30,15 @@
 
 
 /* 토글버튼 크기 담당*/
-label{
+label.false{
+    position: relative;
+    display: inline-block;
+    width: 58px;
+    height: 27px;
+    left :260px;
+    top : -5px;
+  } 
+  label.true{
     position: relative;
     display: inline-block;
     width: 58px;
