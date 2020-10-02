@@ -1,6 +1,7 @@
 import React from "react"
 import "./Friends.css"
 import { withRouter } from "react-router-dom"
+import profile_pic from '../profile_pic.png';
 
 class Friends extends React.Component {
   constructor(props) {
@@ -13,18 +14,22 @@ class Friends extends React.Component {
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
 
-  componentDidMount() {
-    fetch(`http://www.gijigae.com:3000/follow/friends/${this.props.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          ...this.state,
-          myFriendList: data
-        })
+  async componentDidMount() {
+    let getFriends = await fetch(`http://www.gijigae.com:3000/follow/friends/${this.props.id}`)
+    let friends = await getFriends.json();
+    Promise.all(friends.map(async (friend) => {
+      let imgfetch = await fetch(friend.photo)
+      if (imgfetch.status === 404) {
+        friend.photo = profile_pic
       }
-      )
+      return friend;
+    })).then((data) =>
+      this.setState({
+        ...this.state,
+        myFriendList: data
+      })
+    )
   }
-
 
   getMyFriend() {
     fetch(`http://www.gijigae.com:3000/follow/friends/${this.props.id}`)
@@ -43,9 +48,9 @@ class Friends extends React.Component {
     })
   }
 
-  searchUser(e) {
+  async searchUser(e) {
     e.preventDefault();
-    fetch(`http://www.gijigae.com:3000/user/searchuser`, {
+    let searchpost = await fetch(`http://www.gijigae.com:3000/user/searchuser`, {
       method: 'POST',
       body: JSON.stringify({
         data: this.state.searchWord
@@ -54,15 +59,20 @@ class Friends extends React.Component {
         "Content-type": "application/json"
       }
     })
-      .then(res => res.json())
-      .then(json => {
-        console.log(json)
-        this.setState({
-          userList: json
-        })
+    let search = await searchpost.json();
+    Promise.all(search.map(async (friend) => {
+      let imgfetch = await fetch(friend.photo)
+      if (imgfetch.status === 404) {
+        friend.photo = profile_pic
+      }
+      return friend;
+    })).then(json => {
+      console.log(json)
+      this.setState({
+        userList: json
       })
+    })
   }
-
 
   followBtnHandler(e) {
     /* 언팔로우 요청 */
@@ -72,13 +82,13 @@ class Friends extends React.Component {
       fetch(url, {
         method: "DELETE"
       })
-      .then(() => {
-        this.getMyFriend();
-      })
+        .then(() => {
+          this.getMyFriend();
+        })
     }
 
     /* 팔로우 요청 */
-    else if(e.target.name === "follow"){
+    else if (e.target.name === "follow") {
       const url = new URL(`http://www.gijigae.com:3000/follow/follow/${this.props.id}`);
       url.searchParams.append("id", e.target.value);
 
@@ -89,24 +99,20 @@ class Friends extends React.Component {
           "content-type": "application/json"
         }
       })
-      .then(() => {
-        this.getMyFriend();
-      })
+        .then(() => {
+          this.getMyFriend();
+        })
     }
   }
 
-
-   checkFollow(id) {
-
+  checkFollow(id) {
     const { myFriendList } = this.state;
     if (!myFriendList) {
       return false;
     }
-
     for (let value of myFriendList) {
       for (let key in value) {
         if (value[key] === id) {
-          console.log(true);
           return true;
         }
       }
@@ -114,10 +120,8 @@ class Friends extends React.Component {
     return false;
   }
 
-
   render() {
-    const { userList, myFriendList, isFollow, searchWord } = this.state
-    console.log(this.state.myFriendList);
+    const { userList, myFriendList, searchWord } = this.state
     return (
       <div className="friends">
         <h2>Friends</h2>
@@ -129,7 +133,7 @@ class Friends extends React.Component {
           />
           <button onClick={this.searchUser.bind(this)} className="searchBtn">검색</button>
         </form>
-        <ul className={searchWord.length? "none" : "myFriend"}>
+        <ul className={searchWord.length ? "none" : "myFriend"}>
           {
             myFriendList && myFriendList.map((friend) => {
               const { id, nickname, photo } = friend;
@@ -141,16 +145,15 @@ class Friends extends React.Component {
                       this.checkFollow(id) ? "unfollow" : "follow"
                     }</span>
                   </label>
-                  <img src = {photo} className = "photo"/>
+                  <img src={photo} className="photo" />
                   <span className="nickname">{nickname}</span>
                 </li>
               )
             })
           }
         </ul>
-        <ul className={searchWord.length? "searchList" : "none"}>
+        <ul className={searchWord.length ? "searchList" : "none"}>
           {userList && userList.map((data) => {
-            console.log(data);
             const { id, nickname, photo } = data;
             return (
               <li key={id}>
@@ -161,11 +164,10 @@ class Friends extends React.Component {
                       this.checkFollow(id) ? "unfollow" : "follow"
                     }</span>
                   </label>
-                  <img src = {photo} className = "photo"/>
+                  <img src={photo} className="photo" />
                   <span className="nickname">
                     {nickname}
                   </span>
-                  
                 </div>
               </li>
             )

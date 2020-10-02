@@ -12,15 +12,20 @@ class Home extends React.Component {
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
   }
 
-  componentDidMount() {
-    fetch(`http://www.gijigae.com:3000/feed/homefeed/${this.props.id}`)
-      .then(res => res.json())
-      .then(json => {
-        console.log("home feed:", json)
-        this.setState({
-          feed: json
-        })
+  async componentDidMount() {
+    let getHomeFeed = await fetch(`http://www.gijigae.com:3000/feed/homefeed/${this.props.id}`)
+    let homefeed = await getHomeFeed.json();
+    Promise.all(homefeed.map(async (feed) => {
+      let imgfetch = await fetch(feed.photo)
+      if (imgfetch.status === 404) {
+        feed.photo = profile_pic
+      }
+      return feed;
+    })).then(feed => {
+      this.setState({
+        feed: feed
       })
+    })
   }
 
   render() {
