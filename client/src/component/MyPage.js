@@ -23,7 +23,7 @@ class MyPage extends React.Component {
     fetch(`http://www.gijigae.com:3000/feed/myfeed/${this.props.id}`)
       .then(res => res.json())
       .then(json => {
-        console.log("mypage feed:", json)
+        // console.log("mypage feed:", json)
         this.setState({
           feed: json
         })
@@ -47,7 +47,7 @@ class MyPage extends React.Component {
     event.preventDefault();
     let reader = new FileReader();
     let file = event.target.files[0];
-    console.log("onChangePhoto:", file)
+    // console.log("onChangePhoto:", file)
     reader.onloadend = () => {
       // 파일 읽기가 완료되면 state를 바꿈
       this.setState({
@@ -75,7 +75,7 @@ class MyPage extends React.Component {
       // multer사용할 경우 headers 없이 보내야함
     })
       .then((res) => {
-        console.log("changephoto response:", res)
+        // console.log("changephoto response:", res)
 
         this.props.setPhotoHandler(this.state.previewPhoto)
         // console.log(this.state.previewPhoto)
@@ -115,7 +115,7 @@ class MyPage extends React.Component {
     })
       .then(response => response.json())
       .then(json => {
-        console.log(json.messsage)
+        // console.log(json.messsage)
         this.props.isLoginHandler()
         window.sessionStorage.clear();
       })

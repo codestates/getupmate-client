@@ -67,7 +67,7 @@ class Friends extends React.Component {
       }
       return friend;
     })).then(json => {
-      console.log(json)
+      // console.log(json)
       this.setState({
         userList: json
       })
@@ -92,7 +92,7 @@ class Friends extends React.Component {
       const url = new URL(`http://www.gijigae.com:3000/follow/follow/${this.props.id}`);
       url.searchParams.append("id", e.target.value);
 
-      console.log(url);
+      // console.log(url);
       fetch(url, {
         method: "POST",
         headers: {
@@ -138,7 +138,7 @@ class Friends extends React.Component {
             myFriendList && myFriendList.map((friend) => {
               const { id, nickname, photo } = friend;
               return (
-                <li id={id}>
+                <li key={id}>
                   <label>
                     <input type="checkbox" value={id} name={this.checkFollow(id) ? "unfollow" : "follow"} onClick={this.followBtnHandler.bind(this)} />
                     <span className={this.checkFollow(id) ? "unfollow" : "follow"}>{
