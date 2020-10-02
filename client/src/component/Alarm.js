@@ -148,7 +148,7 @@ class Alarm extends React.Component {
                       } />
                       <span className="slider"></span>
                     </label>
-                    <button className="delete" onClick={this.deleteHandler.bind(this)} value={id}>&#10060;</button>
+                    <button className="delete" onClick={this.deleteHandler.bind(this)} value={id}>&#10008;</button>
                     <span className="time">{
                       Number(time.slice(0, 2)) >= 12 ? `오후 ${Number(time.slice(0, 2)) === 12 ? time.slice(0, 5) : `0` + Number(time.slice(0, 2) - 12) + time.slice(2, 5)}` : `오전 ${time.slice(0, 5)}`
                     }</span>
@@ -179,8 +179,6 @@ class Alarm extends React.Component {
                   <option value="하">하</option>
                 </select>
               </form>
-              <div> 소리 / 진동
-                </div>
             </div>
           </div>
         </div>
