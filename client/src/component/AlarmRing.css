@@ -21,7 +21,7 @@
     height: 530px;
     border-radius: 30px;
     opacity: 0.95;
-    }
+}
 
 
 .isAlarm .content h2{
@@ -60,7 +60,7 @@
     color :white;
     position: relative;
     top : -150px;
-    left : 5px;
+    left : center;
 }
 
 /* mission question css */
@@ -68,7 +68,10 @@
     color :white;
     position: relative;
     top : -145px;
-    left : 5px;
+    left : 18%;
+    width : 250px;
+    font-size: large;
+    text-align: center;
 }
 
 /* mission 답 css */
@@ -76,7 +79,7 @@
     color :white;
     position: relative;
     top : -230px;
-    left : 5px;
+    left : center;
 }
 
 
@@ -86,7 +89,7 @@
     font-size: large;
     position: relative;
     top : -230px;
-    left : 5px;
+    left : center;
 }
 .isAlarm .content .mission input:hover {
     box-shadow: 0 0 10px 2px rgb(255, 91, 247);
