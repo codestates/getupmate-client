@@ -1,4 +1,13 @@
-
+/* 구글로그인 버튼 */
+.GoogleLogin {
+    text-align: center;
+}
+.login_with_google{
+    margin-top: 30px;
+    font-size: 0.8rem;
+    text-align: center;
+    color: white;
+}
 
 /* signin에서 email, password 입력, 버튼들의 정렬담당*/
 .signin{
@@ -36,6 +45,7 @@ input::placeholder{
     margin: 8px;
     padding: 0 10px;
     height: 40px;
+    font-size: 0.8rem;
 }
 
 .Signin_input button:hover{

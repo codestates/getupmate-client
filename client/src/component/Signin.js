@@ -82,13 +82,14 @@ class Signin extends React.Component {
             <button
               onClick={this.onClickSignin.bind(this)}
             >Signin</button>
-            <button onClick={this.onClickSocialLogin.bind(this)}></button>
-            <G_Login 
+            {/* <button onClick={this.onClickSocialLogin.bind(this)}></button> */}
+            <button
+            >Signup</button>
+            <div className="login_with_google">login with google</div>
+            <G_Login className="GoogleLogin"
               isLoginHandler={isLoginHandler}
               setUserHandler={setUserHandler}
             />
-            <button
-            >Sign up</button>
           </div>
         </div>
       </div>

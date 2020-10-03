@@ -57,14 +57,36 @@
 }
 
 .MyPage_nickname .signout {
+    /* 구글 로그아웃으로 로그아웃 가능!! */
+    display: none;
+
     position: absolute;
     width: 80px;
-    left: 350px;
-    top: 130px
+    left: 280px;
+    top: 128px
 }
 
 .MyPage_nickname .signout:hover{
   cursor: pointer;
+}
+
+/* 구글 로그아웃 css */
+.G_Logout button{
+    position: absolute;
+    left: 348px;
+    top: 110px;
+    padding-left: 10px;
+}
+.G_Logout div{
+    display: none;
+}
+.G_Logout span{
+    font-size: 0.8rem;
+    display: block;
+    width: 80px;
+}
+.G_Logout button:hover{
+    cursor: pointer;
 }
 
 /* 모달창 css 담당 */

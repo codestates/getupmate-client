@@ -40,7 +40,7 @@ function G_Login(props) {
         console.log("Fail : ",res);
     }
     return(
-        <div>
+        <div className="GoogleLogin">
             <GoogleLogin
                 clientId={clientId}
                 buttonText="Login"
