@@ -1,8 +1,8 @@
 import React from 'react';
 import './MyPage.css'
 import profile_pic from '../profile_pic.png';
-import { withRouter } from "react-router-dom"
-
+import { withRouter } from "react-router-dom";
+import G_Logout  from './GoogleLogout';
 class MyPage extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +17,6 @@ class MyPage extends React.Component {
     window.sessionStorage.setItem('pathname', this.props.location.pathname);
     window.sessionStorage.setItem('photo', this.props.photo);
   }
-
   componentDidMount() {
     // 마이페이지 피드 불러오기
     fetch(`http://www.gijigae.com:3000/feed/myfeed/${this.props.id}`)
@@ -29,19 +28,16 @@ class MyPage extends React.Component {
         })
       })
   }
-
   onChangeHandler(e) {
     this.setState({
       nickname: e.target.value
     })
   }
-
   openModalHandler() {
     this.setState({
       openModal: !this.state.openModal
     })
   }
-
   onChangePhoto(event) {
     // this.setState({ photo: e.target.files[0] });
     event.preventDefault();
@@ -58,7 +54,6 @@ class MyPage extends React.Component {
     // file(blob) 읽어오기
     reader.readAsDataURL(file);
   }
-
   uploadPhoto(e) {
     e.preventDefault();
     const { id } = this.props;
@@ -76,16 +71,12 @@ class MyPage extends React.Component {
     })
       .then((res) => {
         // console.log("changephoto response:", res)
-
         this.props.setPhotoHandler(this.state.previewPhoto)
         // console.log(this.state.previewPhoto)
-
         // 모달 창 닫기
         this.openModalHandler();
       })
   }
-
-
   changeNickname() {
     const { setNicknameHandler, id } = this.props;
     if (this.state.changeClick && this.state.nickname) {
@@ -105,8 +96,8 @@ class MyPage extends React.Component {
       changeClick: !this.state.changeClick
     })
   }
-
   signoutHandler() {
+    console.log('signoutHandler');
     fetch('http://www.gijigae.com:3000/user/signout', {
       method: 'POST',
       headers: {
@@ -120,7 +111,6 @@ class MyPage extends React.Component {
         window.sessionStorage.clear();
       })
   }
-
   render() {
     const { feed } = this.state
     return (
@@ -168,6 +158,7 @@ class MyPage extends React.Component {
             <button
               onClick={this.signoutHandler.bind(this)} className="signout"
             >Sign out</button>
+            <G_Logout signoutHandler={this.signoutHandler.bind(this)}/>
           </div>
         </div>
         <div className="MyPage_feed">
@@ -191,5 +182,4 @@ class MyPage extends React.Component {
     )
   }
 }
-
 export default withRouter(MyPage);
