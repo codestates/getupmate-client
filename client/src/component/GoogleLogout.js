@@ -6,14 +6,14 @@ function G_logout(props) {
         console.log("Success Logout");
     }
     const Fail = (res) => {
-        console.log("fail : ",res)
+        console.log("fail : ", res)
     }
-const { signoutHandler } = props;
-    return(
-        <div onClick={signoutHandler}>
+    const { signoutHandler } = props;
+    return (
+        <div className="G_Logout" onClick={signoutHandler}>
             <GoogleLogout
                 clientId={clientId}
-                buttonText="Logout"
+                buttonText="&nbsp;&nbsp;Logout"
                 onSuccess={Success}
                 onFailure={Fail}
             />

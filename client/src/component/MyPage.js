@@ -2,7 +2,7 @@ import React from 'react';
 import './MyPage.css'
 import profile_pic from '../profile_pic.png';
 import { withRouter } from "react-router-dom";
-import G_Logout  from './GoogleLogout';
+import G_Logout from './GoogleLogout';
 class MyPage extends React.Component {
   constructor(props) {
     super(props);
@@ -158,7 +158,8 @@ class MyPage extends React.Component {
             <button
               onClick={this.signoutHandler.bind(this)} className="signout"
             >Sign out</button>
-            <G_Logout signoutHandler={this.signoutHandler.bind(this)}/>
+            <G_Logout className="G_Logout"
+              signoutHandler={this.signoutHandler.bind(this)} />
           </div>
         </div>
         <div className="MyPage_feed">
