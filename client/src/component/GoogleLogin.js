@@ -6,7 +6,7 @@ function G_Login(props) {
     const Success = async (res) => {
         const profile = res.profileObj;
         console.log("Success! : ",res.profileObj);
-        await fetch('http://localhost:5000/user/googleLogin', {
+        await fetch('http://www.gijigae.com:3000/user/googleLogin', {
             method : 'POST',
             headers: {
                 "content-type": "application/json"
