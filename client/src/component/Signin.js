@@ -60,6 +60,15 @@ class Signin extends React.Component {
 
 
 
+//   async socialLoginHandelr(){
+//     const { isLoginHandler, setUserHandler } = this.props;
+//     let findUser = await fetch("http://www.gijigae.com:3000/auth/google/callback")
+
+//     let user = await findUser.json();
+//     console.log(user);
+//   }
+
+
   render() {
     return (
       <div className="signin">
@@ -83,7 +92,12 @@ class Signin extends React.Component {
             <button
               onClick={this.onClickSignin.bind(this)}
             >Signin</button>
+
             <button onClick={this.onClickSocialLogin.bind(this)}></button>
+// =======
+//             <button onClick={this.socialLoginHandelr.bind(this)}>
+//               <a href="http://www.gijigae.com:3000/auth/google">Login with Google</a></button>
+// >>>>>>> dev
             <button
             >Sign up</button>
           </div>
