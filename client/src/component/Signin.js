@@ -52,14 +52,21 @@ class Signin extends React.Component {
   onClickSignUp() {
     this.props.history.push("/signup");
   }
-
-  async socialLoginHandelr(){
-    const { isLoginHandler, setUserHandler } = this.props;
-    let findUser = await fetch("http://www.gijigae.com:3000/auth/google/callback")
-
-    let user = await findUser.json();
-    console.log(user);
+  
+  onClickSocialLogin(){
+    fetch('https://accounts.google.com/o/oauth2/v2/auth?response_type=code&redirect_uri=http%3A%2F%2Fwww.gijigae.com%3A3000%2Fauth%2Fgoogle%2Fcallback&scope=profile+email&client_id=317692737791-h4rfsfpnp9k27e1rto3mq0jd412uvgfq.apps.googleusercontent.com&flowName=GeneralOAuthFlow')
+    .then(() => console.log(JSON.parse(document.querySelector("body").textContent)));
   }
+
+
+
+//   async socialLoginHandelr(){
+//     const { isLoginHandler, setUserHandler } = this.props;
+//     let findUser = await fetch("http://www.gijigae.com:3000/auth/google/callback")
+
+//     let user = await findUser.json();
+//     console.log(user);
+//   }
 
 
   render() {
@@ -85,10 +92,13 @@ class Signin extends React.Component {
             <button
               onClick={this.onClickSignin.bind(this)}
             >Signin</button>
-            <button onClick={this.socialLoginHandelr.bind(this)}>
-              <a href="http://www.gijigae.com:3000/auth/google">Login with Google</a></button>
+
+            <button onClick={this.onClickSocialLogin.bind(this)}></button>
+// =======
+//             <button onClick={this.socialLoginHandelr.bind(this)}>
+//               <a href="http://www.gijigae.com:3000/auth/google">Login with Google</a></button>
+// >>>>>>> dev
             <button
-              onClick={this.onClickSignUp.bind(this)}
             >Sign up</button>
           </div>
         </div>
