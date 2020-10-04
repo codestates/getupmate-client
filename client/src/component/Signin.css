@@ -2,6 +2,9 @@
 .GoogleLogin {
     text-align: center;
 }
+.GoogleLogin div{
+    height: 40px;
+}
 .login_with_google{
     margin-top: 30px;
     font-size: 0.8rem;
