@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import iphone from './iphone6.png';
 
 const frameStyle = {
-
+  'display': 'none',
   'width': '610px',
   'position': 'absolute',
   'margin': 'auto',

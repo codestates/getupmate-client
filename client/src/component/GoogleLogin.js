@@ -5,41 +5,41 @@ const clientId = "1078450474633-28lil3fd23q2pqsh3sh0iqeffddee9lm.apps.googleuser
 function G_Login(props) {
     const Success = async (res) => {
         const profile = res.profileObj;
-        console.log("Success! : ",res.profileObj);
+        console.log("Success! : ", res.profileObj);
         await fetch('http://www.gijigae.com:3000/user/googleLogin', {
-            method : 'POST',
+            method: 'POST',
             headers: {
                 "content-type": "application/json"
             },
-            body : JSON.stringify({
+            body: JSON.stringify({
                 email: profile.email,
-                name : profile.name,
-                photo : profile.imageUrl
+                name: profile.name,
+                photo: profile.imageUrl
             })
         })
-        .then(result => result.json())
-        .then(async (json) => {
-            const isLoginHandler = props.isLoginHandler;
-            const setUserHandler = props.setUserHandler;
-            console.log('json : ',json);
-            let findImg = await fetch(`http://www.gijigae.com:3000/upload/${json.id}-photo.jpeg`);
-            if (findImg.status === 404) {
-              setUserHandler(json.id, json.email, profile_pic, json.nickname)
-              window.sessionStorage.setItem('photo', profile_pic);
-            } else {
-              setUserHandler(json.id, json.email, findImg.url, json.nickname)
-              window.sessionStorage.setItem('photo', findImg.url);
-            }
-            window.sessionStorage.setItem('id', json.id);
-            window.sessionStorage.setItem('email', json.email);
-            window.sessionStorage.setItem('nickname', json.nickname);
-            isLoginHandler();
-        })
+            .then(result => result.json())
+            .then(async (json) => {
+                const isLoginHandler = props.isLoginHandler;
+                const setUserHandler = props.setUserHandler;
+                console.log('json : ', json);
+                let findImg = await fetch(`http://www.gijigae.com:3000/upload/${json.id}-photo.jpeg`);
+                if (findImg.status === 404) {
+                    setUserHandler(json.id, json.email, profile_pic, json.nickname)
+                    window.sessionStorage.setItem('photo', profile_pic);
+                } else {
+                    setUserHandler(json.id, json.email, findImg.url, json.nickname)
+                    window.sessionStorage.setItem('photo', findImg.url);
+                }
+                window.sessionStorage.setItem('id', json.id);
+                window.sessionStorage.setItem('email', json.email);
+                window.sessionStorage.setItem('nickname', json.nickname);
+                isLoginHandler();
+            })
     }
     const onFailure = (res) => {
-        console.log("Fail : ",res);
+        console.log("Fail : ", res);
     }
-    return(
+    return (
         <div className="GoogleLogin">
             <GoogleLogin
                 clientId={clientId}
