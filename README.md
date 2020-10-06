@@ -14,7 +14,7 @@ gijigae입니다:D
 
 
 # 어떤 기술이 사용되었나요?
-![image](https://user-images.githubusercontent.com/45649186/95163851-ba547580-07e3-11eb-9ec7-ee8ea178090d.png)       
+![image](https://user-images.githubusercontent.com/45649186/95163851-ba547580-07e3-11eb-9ec7-ee8ea178090d.png =100x20)       
    
    
 # <span>&#128526;</span>이렇게 생겼어요!
