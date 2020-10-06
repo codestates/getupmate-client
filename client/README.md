@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# <span>&#9200;</span> Get-Up-Mate
+<img src="https://user-images.githubusercontent.com/45649186/95010338-6cb0ff00-0663-11eb-8a26-386e5849b9b0.png" width=300 height=300 />
 
-## Available Scripts
+혼자 맞는 아침보다 친구들과 함께 시간을 계획하고 아침을 맞이해보는 것은 어떨까요?
 
-In the project directory, you can run:
+저희 ***get-up-mate***가 이를 도와줄 것입니다!
 
-### `npm start`
+***다양한 미션들을 수행***하고 아침에 ***기상인증***을 하여 계획적이고 체계적인 하루를 보낼 수 있습니다.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+***"당신과 함께 아침을 맞이할 파트너"***
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+gijigae입니다:D
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 어떤 기술이 사용되었나요?
+![image](https://user-images.githubusercontent.com/45649186/95163024-f686d680-07e1-11eb-990a-7be8079eb259.png)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 이렇게 생겼어요!
+![alarm-1](https://user-images.githubusercontent.com/45649186/95163355-a5c3ad80-07e2-11eb-87b4-c9456ea90527.gif)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![friends](https://user-images.githubusercontent.com/45649186/95163419-c429a900-07e2-11eb-9b41-8e8e9dd38e55.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![mypage](https://user-images.githubusercontent.com/45649186/95163439-ce4ba780-07e2-11eb-9538-c0aaecdecdf2.gif)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# <span> &#128513;</sapn> 우리를 소개합니다.
+![image](https://user-images.githubusercontent.com/45649186/95163580-25517c80-07e3-11eb-9833-ce878d8fae70.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# For project details
+### [checkout WIKI](https://github.com/codestates/getupmate-client/wiki)
