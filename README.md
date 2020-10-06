@@ -17,14 +17,12 @@ gijigae입니다:D
 ![image](https://user-images.githubusercontent.com/45649186/95163851-ba547580-07e3-11eb-9ec7-ee8ea178090d.png)       
    
    
-# 이렇게 생겼어요!
+# <span>&#128526;</span>이렇게 생겼어요!
 ![alarm-1](https://user-images.githubusercontent.com/45649186/95163355-a5c3ad80-07e2-11eb-87b4-c9456ea90527.gif)
-
 ![friends](https://user-images.githubusercontent.com/45649186/95163419-c429a900-07e2-11eb-9b41-8e8e9dd38e55.gif)
-
-![mypage](https://user-images.githubusercontent.com/45649186/95163439-ce4ba780-07e2-11eb-9538-c0aaecdecdf2.gif)
-
-
+![mypage](https://user-images.githubusercontent.com/45649186/95163439-ce4ba780-07e2-11eb-9538-c0aaecdecdf2.gif)   
+   
+   
 # <span> &#128513;</sapn> 우리를 소개합니다.
 ![image](https://user-images.githubusercontent.com/45649186/95163580-25517c80-07e3-11eb-9833-ce878d8fae70.png)
 
